@@ -1,63 +1,6 @@
-"use client";
 import React from "react";
-
-interface ProjectTypes {
-  id: number;
-  title: string;
-  object: string;
-  solution: string;
-  result: string;
-  image: string;
-}
-
-function ProjectCard({ project }: { project: ProjectTypes }) {
-  const isReversed = project.id % 2 !== 0;
-
-  return (
-    <div
-      className={`grid grid-cols-1 md:grid-cols-2 gap-8 my-10 bg-gray-200 rounded-2xl overflow-hidden border border-gray-400 ${
-        isReversed ? "md:grid-cols-[2fr_1fr]" : "md:grid-cols-[1fr_2fr]"
-      }`}
-    >
-      {isReversed && (
-        <div className="order-2 md:order-1 flex items-center justify-center h-full">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-auto object-cover"
-          />
-        </div>
-      )}
-
-      <div
-        className={`flex flex-col space-y-2 justify-center p-4 ${
-          isReversed ? "order-1 md:order-2" : "order-1"
-        }`}
-      >
-        <h1 className="text-2xl font-bold text-gray-900">{project.title}</h1>
-        <h3 className="text-lg text-gray-700 font-semibold">
-          Объект: <span className="font-normal">{project.object}</span>
-        </h3>
-        <h3 className="text-lg text-gray-700 font-semibold">
-          Решение: <span className="font-normal">{project.solution}</span>
-        </h3>
-        <h3 className="text-lg text-gray-700 font-semibold">
-          Результат: <span className="font-normal">{project.result}</span>
-        </h3>
-      </div>
-
-      {!isReversed && (
-        <div className="order-2 flex items-center justify-center h-full">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-auto object-cover"
-          />
-        </div>
-      )}
-    </div>
-  );
-}
+import ProjectCard from "@/components/ProjectCard";
+import { ProjectTypes } from "@/types/RootTypes";
 
 const ProjectSection = () => {
   const projects: ProjectTypes[] = [
@@ -101,7 +44,7 @@ const ProjectSection = () => {
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project.id} {...project} />
         ))}
       </div>
     </div>
