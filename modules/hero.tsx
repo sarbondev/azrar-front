@@ -7,7 +7,7 @@ const ENGINEER_IMAGE_PLACEHOLDER = "./heroim.png";
 function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 relative z-10">
+      <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 relative z-10">
         <div className="w-full">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
             Инженерия <span className="text-red-600">безопасности.</span>
@@ -46,7 +46,7 @@ function HeroSection() {
             />
           </div>
 
-          <div className="absolute -top-5 -right-5 lg:-right-10 z-20">
+          <div className="absolute -top-5 right-0 z-20">
             <button className="w-24 h-24 bg-red-500 border border-white rounded-2xl shadow-2xl shadow-red-500 flex items-center justify-center p-3 transform transition-transform duration-300 hover:scale-105">
               <Compass className="w-14 h-14 text-white" />
             </button>

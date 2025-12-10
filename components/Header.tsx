@@ -2,6 +2,8 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
+import { RootState } from "@/lib/store/store";
+import { useSelector } from "react-redux";
 
 const NAV_LINKS = [
   { href: "#", label: "Товары" },
@@ -14,6 +16,8 @@ function Header() {
   const searchWrapperRef = useRef(null);
   const searchInputRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cart = useSelector((state: RootState) => state.cart);
+  const totalItemsInCart = cart.length;
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -84,8 +88,12 @@ function Header() {
                   className="w-5 h-5 text-gray-500"
                   strokeWidth={2}
                 />
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center leading-none font-medium">
-                  1
+                <span
+                  className={`${
+                    totalItemsInCart >= 1 ? "absolute" : "hidden"
+                  } -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center leading-none font-medium`}
+                >
+                  {totalItemsInCart}
                 </span>
               </button>
             </div>

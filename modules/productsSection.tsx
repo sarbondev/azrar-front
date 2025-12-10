@@ -36,7 +36,7 @@ const products: ProductTypes[] = [
 export default function productsSection() {
   return (
     <main className="min-h-screen bg-white p-4 md:p-8">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto">
         <header className="mb-10 md:mb-14">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 leading-tight">
             Лучшие <span className="text-[#de1b38]">предложения</span>

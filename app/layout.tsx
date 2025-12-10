@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import { Lato } from "next/font/google";
-import { StoreProvider } from "@/lib/store/StoreProvider";
+import StoreProvider from "@/lib/store/StoreProvider";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -53,10 +54,11 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={lato.className}>
-        <Header />
-        <main>
-          <StoreProvider>{children}</StoreProvider>
-        </main>
+        <StoreProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );

@@ -110,7 +110,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
@@ -168,7 +168,7 @@ export default function TestimonialsSection() {
             }}
           >
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="flex-shrink-0 w-full px-2">
+              <div key={testimonial.id} className="shrink-0 w-full px-2">
                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-4xl mx-auto">
                   <div className="flex flex-col md:flex-row">
                     {/* Image Section */}
@@ -179,7 +179,7 @@ export default function TestimonialsSection() {
                         className="w-full h-full object-cover"
                         draggable="false"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                       <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
                         <span className="text-sm font-medium text-gray-800">
                           {testimonial.username}

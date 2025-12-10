@@ -1,8 +1,8 @@
 import React from "react";
 import SystemCard from "@/components/SystemCard";
-import { System } from "@/types/RootTypes";
+import { SystemTypes } from "@/types/RootTypes";
 
-const systems: System[] = [
+const systems: SystemTypes[] = [
   {
     id: "cameras",
     title: "Системы видеонаблюдения",
@@ -45,7 +45,7 @@ const systems: System[] = [
 export default function systemsSection() {
   return (
     <main className="min-h-screen bg-white p-4 md:p-8">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto">
         <header className="mb-10 md:mb-14">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 leading-tight">
             Выберите <span className="text-[#de1b38]">подходящую</span>

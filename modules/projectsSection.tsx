@@ -43,8 +43,8 @@ const ProjectSection = () => {
         </h1>
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} {...project} />
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
     </div>
