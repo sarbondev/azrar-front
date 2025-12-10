@@ -1,10 +1,16 @@
 "use client";
 
-import { System } from "@/types/RootTypes";
+import { SystemTypes } from "@/types/RootTypes";
 import { ArrowRight } from "lucide-react";
 import React, { useState } from "react";
 
-function SystemCard({ system, isLast }: { system: System; isLast?: boolean }) {
+function SystemCard({
+  system,
+  isLast,
+}: {
+  system: SystemTypes;
+  isLast?: boolean;
+}) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   if (system.id === "all") {
