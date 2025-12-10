@@ -8,7 +8,7 @@ export default function TestimonialsSection() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  const autoPlayRef = useRef<null | any>(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
   const testimonials = [
     {
@@ -77,20 +77,21 @@ export default function TestimonialsSection() {
     );
   };
 
-  const goToSlide = (index: any) => {
+  const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
 
-  const handleDragStart = (e: any) => {
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     stopAutoPlay();
     setIsDragging(true);
-    setStartX(e.type === "touchstart" ? e.touches[0].clientX : e.clientX);
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    setStartX(clientX);
   };
 
-  const handleDragMove = (e: any) => {
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return;
-    const currentX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
-    const diff = currentX - startX;
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const diff = clientX - startX;
     setTranslateX(diff);
   };
 
@@ -198,7 +199,7 @@ export default function TestimonialsSection() {
                       </svg>
 
                       <p className="text-lg md:text-xl leading-relaxed mb-8 font-light">
-                        "{testimonial.quote}"
+                        &quot;{testimonial.quote}&quot;
                       </p>
 
                       <div>

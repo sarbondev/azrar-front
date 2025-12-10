@@ -40,14 +40,6 @@ export const authApi = createApi({
       }),
     }),
 
-    // LOGOUT (Mutation - agar server talab qilsa)
-    logout: builder.mutation<any, void>({
-      query: () => ({
-        url: "auth/logout",
-        method: "POST",
-      }),
-    }),
-
     // GET PROFILE (Query - token yordamida)
     getProfile: builder.query<UserProfile, void>({
       query: () => "auth/profile",
@@ -55,5 +47,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useGetProfileQuery } =
-  authApi;
+export const { useLoginMutation, useGetProfileQuery } = authApi;

@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Send } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -40,7 +41,7 @@ function Footer() {
       <div className="container mx-auto p-6 md:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10">
           <div className="flex flex-col gap-6">
-            <img src="./logo.svg" width={"200px"} alt="" />
+            <Image src="./logo.svg" width={200} height={100} alt="logo" />
             <p className="text-blue-100/80">
               Надёжные инженерные решения для бизнеса и дома. Комплексные
               системы пожаротушения и видеонаблюдения.

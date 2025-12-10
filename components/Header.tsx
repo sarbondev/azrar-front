@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { RootState } from "@/lib/store/store";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { href: "#", label: "Товары" },
@@ -40,10 +41,12 @@ function Header() {
         onClick={() => setIsMenuOpen(false)}
       />
 
-      <header className="w-full bg-white h-16 min-h-16 sticky top-0 z-50">
-        <div className="container mx-auto flex items-center justify-between px-4 py-2 h-full">
+      <header className="w-full bg-white h-16 min-h-16 sticky top-0 z-50 p-2">
+        <div className="container mx-auto flex items-center justify-between py-2 h-full">
           <div className="flex items-center min-w-0 lg:min-w-[140px] h-full">
-            <img
+            <Image
+              width={150}
+              height={75}
               src="/logo_dark.svg"
               alt="Azrar Logo"
               className="h-7 w-auto min-w-8"

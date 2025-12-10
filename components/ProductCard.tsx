@@ -7,10 +7,7 @@ const ProductCard = function productCard({
   product: ProductTypes;
 }) {
   return (
-    <div
-      className={`cursor-pointer rounded-2xl overflow-hidden border border-gray-400`}
-      tabIndex={0}
-    >
+    <div className={`cursor-pointer rounded-2xl overflow-hidden`} tabIndex={0}>
       <div className="h-[200px] md:h-[350px]">
         {product.image ? (
           <img
@@ -24,7 +21,7 @@ const ProductCard = function productCard({
           <div className="w-full h-full flex items-center justify-center bg-gray-200" />
         )}
       </div>
-      <div className="space-y-1 p-4">
+      <div className="space-y-1 py-2">
         <h3 className="text-xs sm:text-md md:text-xl font-bold">
           {product.title}
         </h3>
