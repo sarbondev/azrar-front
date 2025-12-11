@@ -73,6 +73,23 @@ function Footer() {
           </div>
         </div>
       </div>
+      <div className="container mx-auto p-6 md:py-10 text-white/80 flex items-center justify-between">
+        <p>{new Date().getFullYear()} Azrar Fire System. Все права защищены</p>
+        <ul>
+          <li>
+            Developed by{" "}
+            <a href="#" className="underline">
+              Sarbondev
+            </a>
+          </li>
+          <li>
+            Designed by{" "}
+            <a href="#" className="underline">
+              Dilshod Egm
+            </a>
+          </li>
+        </ul>
+      </div>
     </footer>
   );
 }
