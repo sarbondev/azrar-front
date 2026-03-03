@@ -5,12 +5,14 @@ import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { RootState } from "@/lib/store/store";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import Link from "next/link";
 
 const NAV_LINKS = [
-  { href: "#", label: "Товары" },
-  { href: "#", label: "О компании" },
-  { href: "#", label: "Решения" },
-  { href: "#", label: "Контакты" },
+  { href: "/", label: "Главная" },
+  { href: "/products", label: "Товары" },
+  { href: "/about", label: "О компании" },
+  { href: "/solutions", label: "Решения" },
+  { href: "/contacts", label: "Контакты" },
 ];
 
 function Header() {
@@ -21,15 +23,9 @@ function Header() {
   const totalItemsInCart = cart.length;
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    isMenuOpen
+      ? document.body.classList.add("overflow-hidden")
+      : document.body.classList.remove("overflow-hidden");
   }, [isMenuOpen]);
 
   return (
@@ -43,7 +39,10 @@ function Header() {
 
       <header className="w-full bg-white h-16 min-h-16 sticky top-0 z-50 p-2">
         <div className="container mx-auto flex items-center justify-between py-2 h-full">
-          <div className="flex items-center min-w-0 lg:min-w-[140px] h-full">
+          <Link
+            href={"/"}
+            className="flex items-center min-w-0 lg:min-w-[140px] h-full"
+          >
             <Image
               width={150}
               height={75}
@@ -51,18 +50,18 @@ function Header() {
               alt="Azrar Logo"
               className="h-7 w-auto min-w-8"
             />
-          </div>
+          </Link>
 
           <nav className="hidden lg:flex flex-1 h-full">
             <ul className="flex gap-6 justify-start items-center h-full m-0 p-0 list-none">
               {NAV_LINKS.map(({ href, label }) => (
                 <li key={label}>
-                  <a
+                  <Link
                     href={href}
                     className="text-sm text-gray-700 no-underline transition-colors hover:text-blue-600"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -93,7 +92,7 @@ function Header() {
                 />
                 <span
                   className={`${
-                    totalItemsInCart >= 1 ? "absolute" : "hidden"
+                    4 >= 1 ? "absolute" : "hidden"
                   } -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center leading-none font-medium`}
                 >
                   {totalItemsInCart}
@@ -101,11 +100,12 @@ function Header() {
               </button>
             </div>
 
-            <button className="px-3 sm:px-4 h-9 bg-[#173F5F] text-white font-medium text-sm rounded-lg min-w-0 lg:min-w-[120px] cursor-pointer transition-colors border-none hover:bg-[#122f44]">
-              <span className="hidden sm:inline">Личный кабинет</span>
-
-              <span className="sm:hidden">Вход</span>
-            </button>
+            <Link
+              href={"/login"}
+              className="flex items-center justify-center px-3 sm:px-4 h-9 bg-[#173F5F] text-white font-medium text-sm rounded-lg min-w-0 lg:min-w-[120px] cursor-pointer transition-colors border-none hover:bg-[#122f44]"
+            >
+              Войти
+            </Link>
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -144,13 +144,13 @@ function Header() {
             <ul className="flex flex-col gap-1 list-none m-0 p-0">
               {NAV_LINKS.map(({ href, label }) => (
                 <li key={label}>
-                  <a
+                  <Link
                     href={href}
                     className="block p-4 text-lg font-semibold text-gray-700 rounded-lg hover:bg-blue-50 transition-colors border-b border-gray-100 last:border-b-0"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

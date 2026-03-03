@@ -39,7 +39,7 @@ const authSlice = createSlice({
     // 2. setCredentials action'ini yangilash: token va user obyekti kerak
     setCredentials: (
       state,
-      action: PayloadAction<{ token: string; user: UserTypes }> // Payloadni o'zgartirdik
+      action: PayloadAction<{ token: string; user: UserTypes }>, // Payloadni o'zgartirdik
     ) => {
       state.token = action.payload.token;
       state.user = action.payload.user; // Foydalanuvchini saqlash
