@@ -1,5 +1,5 @@
 import { formatPrice } from "@/lib/utils";
-import { ProductTypes } from "@/types/RootTypes";
+import { ProductTypes } from "@/types/OldTypes";
 
 const ProductCard = function productCard({
   product,

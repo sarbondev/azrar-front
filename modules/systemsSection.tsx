@@ -1,6 +1,6 @@
 import React from "react";
 import SystemCard from "@/components/SystemCard";
-import { SystemTypes } from "@/types/RootTypes";
+import { SystemTypes } from "@/types/OldTypes";
 
 const systems: SystemTypes[] = [
   {

@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductTypes } from "@/types/RootTypes";
+import { ProductTypes } from "@/types/OldTypes";
 import ProductCard from "@/components/ProductCard";
 
 const products: ProductTypes[] = [

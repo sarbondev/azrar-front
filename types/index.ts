@@ -14,13 +14,6 @@ export interface ProjectTypes {
   image: string;
 }
 
-export interface ProductTypes {
-  title: string;
-  price: number;
-  category: string;
-  image?: string;
-}
-
 export interface UserTypes {
   id: number;
   fullName: string;

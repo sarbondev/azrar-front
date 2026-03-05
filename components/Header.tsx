@@ -92,7 +92,9 @@ function Header() {
                 />
                 <span
                   className={`${
-                    4 >= 1 ? "absolute" : "hidden"
+                    totalItemsInCart && totalItemsInCart >= 1
+                      ? "absolute"
+                      : "hidden"
                   } -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center leading-none font-medium`}
                 >
                   {totalItemsInCart}
@@ -122,7 +124,7 @@ function Header() {
       </header>
 
       <div
-        className={`lg:hidden fixed inset-y-0 right-0 top-16 bg-white z-40 transition-transform duration-300 ease-in-out ${
+        className={`lg:hidden fixed h-screen inset-y-0 right-0 top-16 bg-white z-40 transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } w-full md:w-96 p-6 shadow-xl overflow-y-auto`}
         onClick={(e) => e.stopPropagation()}

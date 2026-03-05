@@ -1,4 +1,4 @@
-import { ProjectTypes } from "@/types/RootTypes";
+import { ProjectTypes } from "@/types/OldTypes";
 import Link from "next/link";
 
 function ProjectCard({ project }: { project: ProjectTypes }) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { SystemTypes } from "@/types/RootTypes";
+import { SystemTypes } from "@/types/OldTypes";
 import { ArrowRight } from "lucide-react";
 import React, { useState } from "react";
 

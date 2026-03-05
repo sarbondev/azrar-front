@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectCard from "@/components/ProjectCard";
-import { ProjectTypes } from "@/types/RootTypes";
+import { ProjectTypes } from "@/types/OldTypes";
 
 const ProjectSection = () => {
   const projects: ProjectTypes[] = [
