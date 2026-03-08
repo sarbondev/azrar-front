@@ -1,1 +1,1 @@
-export const API_URL = "https://server.azrar.uz";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";

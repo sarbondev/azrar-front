@@ -1,41 +1,61 @@
+"use client";
+
 import { Facebook, Instagram, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
 
 const icons = [{ label: Instagram }, { label: Send }, { label: Facebook }];
 
-const links = [
+const RAW_LINKS = [
   {
-    mainTitle: "Разделы",
+    sectionKey: "documents",
     routes: [
-      { label: "Конфиденциальность", url: "/" },
-      { label: "Соглашение", url: "/catalogs" },
-      { label: "Оплата и доставка", url: "/about" },
+      { linkKey: "privacy", url: "/" },
+      { linkKey: "agreement", url: "/catalogs" },
+      { linkKey: "payment", url: "/about" },
     ],
   },
   {
-    mainTitle: "Документы и политика:",
+    sectionKey: "policy",
     routes: [
-      { label: "+998 (90) 123-45-67", url: "/" },
-      { label: "info@engineeringpro.uz", url: "/catalogs" },
-      { label: "Ташкент, ул. Амира Темура, 45", url: "/about" },
+      { linkKey: "phone", url: "/" },
+      { linkKey: "email", url: "/catalogs" },
+      { linkKey: "address", url: "/about" },
     ],
   },
   {
-    mainTitle: "Контактная информация:",
+    sectionKey: "contact",
     routes: [
-      { label: "Главная", url: "/" },
-      { label: "Каталог товаров", url: "/catalogs" },
-      { label: "О компании", url: "/about" },
-      { label: "Контакты", url: "/contacts" },
-      { label: "Услуги и решения", url: "/services" },
-      { label: "Наши работы", url: "/projects" },
+      { linkKey: "home", url: "/" },
+      { linkKey: "catalog", url: "/catalogs" },
+      { linkKey: "about", url: "/about" },
+      { linkKey: "contacts", url: "/contacts" },
+      { linkKey: "services", url: "/services" },
+      { linkKey: "projects", url: "/projects" },
     ],
   },
 ];
 
 function Footer() {
+  const { t, isMounted } = useClientTranslation("common"); // ✅
+
+  const links = isMounted
+    ? RAW_LINKS.map((section) => ({
+        mainTitle: t(`footer.sections.${section.sectionKey}.title`),
+        routes: section.routes.map((route) => ({
+          label: t(
+            `footer.sections.${section.sectionKey}.links.${route.linkKey}`,
+          ),
+          url: route.url,
+        })),
+      }))
+    : RAW_LINKS.map((section) => ({
+        mainTitle: "",
+        routes: section.routes.map((route) => ({ label: "", url: route.url })),
+      }));
+
   return (
     <footer className="bg-[#26364A]">
       <div className="container mx-auto p-6 md:py-10">
@@ -43,8 +63,7 @@ function Footer() {
           <div className="flex flex-col gap-6">
             <Image src="./logo.svg" width={200} height={100} alt="logo" />
             <p className="text-blue-100/80">
-              Надёжные инженерные решения для бизнеса и дома. Комплексные
-              системы пожаротушения и видеонаблюдения.
+              {isMounted ? t("footer.description") : ""}
             </p>
             <div className="flex flex-wrap gap-4">
               {icons.map((icon, index) => (
@@ -74,16 +93,19 @@ function Footer() {
         </div>
       </div>
       <div className="container mx-auto p-6 md:py-10 text-white/80 flex items-center justify-between">
-        <p>{new Date().getFullYear()} Azrar Fire System. Все права защищены</p>
+        <p>
+          {new Date().getFullYear()} Azrar Fire System.{" "}
+          {isMounted ? t("footer.copyright") : ""}
+        </p>
         <ul>
           <li>
-            Developed by{" "}
+            {isMounted ? t("footer.developedBy") : ""}{" "}
             <a href="#" className="underline">
               Sarbondev
             </a>
           </li>
           <li>
-            Designed by{" "}
+            {isMounted ? t("footer.designedBy") : ""}{" "}
             <a href="#" className="underline">
               Dilshod Egm
             </a>

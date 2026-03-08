@@ -1,21 +1,24 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { RootState } from "@/lib/store/store";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import Link from "next/link";
+import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const NAV_LINKS = [
-  { href: "/", label: "Главная" },
-  { href: "/products", label: "Товары" },
-  { href: "/about", label: "О компании" },
-  { href: "/solutions", label: "Решения" },
-  { href: "/contacts", label: "Контакты" },
+  { href: "/", labelKey: "nav.home" },
+  { href: "/products", labelKey: "nav.products" },
+  { href: "/about", labelKey: "nav.about" },
+  { href: "/solutions", labelKey: "nav.solutions" },
+  { href: "/contacts", labelKey: "nav.contacts" },
 ];
 
 function Header() {
+  const { t } = useClientTranslation("common"); // ✅
   const searchWrapperRef = useRef(null);
   const searchInputRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,9 +26,11 @@ function Header() {
   const totalItemsInCart = cart.length;
 
   useEffect(() => {
-    isMenuOpen
-      ? document.body.classList.add("overflow-hidden")
-      : document.body.classList.remove("overflow-hidden");
+    if (isMenuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
   }, [isMenuOpen]);
 
   return (
@@ -54,13 +59,13 @@ function Header() {
 
           <nav className="hidden lg:flex flex-1 h-full">
             <ul className="flex gap-6 justify-start items-center h-full m-0 p-0 list-none">
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={label}>
+              {NAV_LINKS.map(({ href, labelKey }) => (
+                <li key={labelKey}>
                   <Link
                     href={href}
                     className="text-sm text-gray-700 no-underline transition-colors hover:text-blue-600"
                   >
-                    {label}
+                    {t(labelKey)}
                   </Link>
                 </li>
               ))}
@@ -78,13 +83,14 @@ function Header() {
               <input
                 ref={searchInputRef}
                 type="text"
-                placeholder="Поиск товаров"
+                placeholder={t("header.searchProducts")}
                 autoComplete="off"
                 className="opacity-100 w-full bg-transparent pointer-events-auto pl-8 pr-2 min-w-0 border-none h-full transition-all duration-300 relative z-10 text-sm focus:outline-none text-gray-900"
               />
             </div>
 
             <div className="relative h-full flex items-center">
+              <LanguageSwitcher />
               <button className="flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 bg-white relative cursor-pointer transition-colors hover:bg-gray-100">
                 <ShoppingCart
                   className="w-5 h-5 text-gray-500"
@@ -92,9 +98,7 @@ function Header() {
                 />
                 <span
                   className={`${
-                    totalItemsInCart && totalItemsInCart >= 1
-                      ? "absolute"
-                      : "hidden"
+                    totalItemsInCart >= 1 ? "absolute" : "hidden"
                   } -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center leading-none font-medium`}
                 >
                   {totalItemsInCart}
@@ -106,7 +110,7 @@ function Header() {
               href={"/login"}
               className="flex items-center justify-center px-3 sm:px-4 h-9 bg-[#173F5F] text-white font-medium text-sm rounded-lg min-w-0 lg:min-w-[120px] cursor-pointer transition-colors border-none hover:bg-[#122f44]"
             >
-              Войти
+              {t("header.login")}
             </Link>
 
             <button
@@ -136,7 +140,7 @@ function Header() {
             </div>
             <input
               type="text"
-              placeholder="Поиск товаров..."
+              placeholder={t("header.searchProducts")}
               autoComplete="off"
               className="w-full bg-transparent pl-8 pr-2 min-w-0 border-none h-full text-base focus:outline-none text-gray-900"
             />
@@ -144,14 +148,14 @@ function Header() {
 
           <nav>
             <ul className="flex flex-col gap-1 list-none m-0 p-0">
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={label}>
+              {NAV_LINKS.map(({ href, labelKey }) => (
+                <li key={labelKey}>
                   <Link
                     href={href}
                     className="block p-4 text-lg font-semibold text-gray-700 rounded-lg hover:bg-blue-50 transition-colors border-b border-gray-100 last:border-b-0"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {label}
+                    {t(labelKey)}
                   </Link>
                 </li>
               ))}

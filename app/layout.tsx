@@ -46,19 +46,23 @@ export const metadata: Metadata = {
   },
 };
 
+import I18nProvider from "@/components/I18nProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="uz">
       <body className={lato.className}>
-        <StoreProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </StoreProvider>
+        <I18nProvider>
+          <StoreProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </StoreProvider>
+        </I18nProvider>
       </body>
     </html>
   );

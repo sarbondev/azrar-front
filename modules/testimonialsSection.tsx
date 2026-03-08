@@ -2,6 +2,34 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
+
+const RAW_TESTIMONIALS = [
+  {
+    id: 1,
+    key: "timur",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
+  },
+  {
+    id: 2,
+    key: "rustam",
+    image:
+      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=600&h=600&fit=crop",
+  },
+  {
+    id: 3,
+    key: "aziza",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop",
+  },
+  {
+    id: 4,
+    key: "shohruh",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=600&fit=crop",
+  },
+];
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,45 +37,21 @@ export default function TestimonialsSection() {
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const { t, isMounted } = useClientTranslation("common"); // ✅
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Тимур Ахмаджонов",
-      username: "@uztech_indst",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
-      quote:
-        "Мы ценим обратную связь и гордимся результатами, которые достигаем вместе с нашими клиентами.",
-    },
-    {
-      id: 2,
-      name: "Рустам Хамидов",
-      username: "@yangihayot",
-      image:
-        "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=600&h=600&fit=crop",
-      quote:
-        "Устанавливали систему контроля доступа, работает стабильно. Персонал понятный, живой.",
-    },
-    {
-      id: 3,
-      name: "Азиза Каримова",
-      username: "@aziza_tech",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop",
-      quote:
-        "Профессиональный подход к каждому проекту. Качество работы на высшем уровне, рекомендую!",
-    },
-    {
-      id: 4,
-      name: "Шохрух Усманов",
-      username: "@shohruh_dev",
-      image:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=600&fit=crop",
-      quote:
-        "Отличная команда специалистов. Все работы выполнены в срок и с гарантией качества.",
-    },
-  ];
+  const testimonials = isMounted
+    ? RAW_TESTIMONIALS.map((item) => ({
+        ...item,
+        name: t(`testimonials.items.${item.key}.name`),
+        username: t(`testimonials.items.${item.key}.username`),
+        quote: t(`testimonials.items.${item.key}.quote`),
+      }))
+    : RAW_TESTIMONIALS.map((item) => ({
+        ...item,
+        name: "",
+        username: "",
+        quote: "",
+      }));
 
   useEffect(() => {
     startAutoPlay();
@@ -56,58 +60,55 @@ export default function TestimonialsSection() {
 
   const startAutoPlay = () => {
     stopAutoPlay();
-    autoPlayRef.current = setInterval(() => {
-      nextSlide();
-    }, 5000);
+    autoPlayRef.current = setInterval(() => nextSlide(), 5000);
   };
 
   const stopAutoPlay = () => {
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-    }
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
   };
 
-  const nextSlide = () => {
+  const nextSlide = () =>
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevSlide = () => {
+  const prevSlide = () =>
     setCurrentIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+  const goToSlide = (index: number) => setCurrentIndex(index);
 
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     stopAutoPlay();
     setIsDragging(true);
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    setStartX(clientX);
+    setStartX("touches" in e ? e.touches[0].clientX : e.clientX);
   };
 
   const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return;
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const diff = clientX - startX;
-    setTranslateX(diff);
+    setTranslateX(("touches" in e ? e.touches[0].clientX : e.clientX) - startX);
   };
 
   const handleDragEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
-
-    if (translateX > 50) {
-      prevSlide();
-    } else if (translateX < -50) {
-      nextSlide();
-    }
-
+    if (translateX > 50) prevSlide();
+    else if (translateX < -50) nextSlide();
     setTranslateX(0);
     startAutoPlay();
   };
+
+  if (!isMounted) {
+    // ✅ skeleton
+    return (
+      <section className="py-16 px-4 animate-pulse">
+        <div className="container mx-auto">
+          <div className="mb-12 space-y-3">
+            <div className="h-12 bg-gray-200 rounded w-2/3" />
+            <div className="h-5 bg-gray-200 rounded w-1/2" />
+          </div>
+          <div className="h-80 bg-gray-200 rounded-3xl max-w-4xl mx-auto" />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 px-4">
@@ -115,11 +116,13 @@ export default function TestimonialsSection() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-              Отзывы наших <span className="text-red-600">клиентов</span>
+              {t("testimonials.title")}{" "}
+              <span className="text-red-600">
+                {t("testimonials.titleHighlight")}
+              </span>
             </h2>
             <p className="text-gray-600 text-lg max-w-xl">
-              Мы ценим обратную связь и гордимся результатами, которые достигаем
-              вместе с нашими клиентами.
+              {t("testimonials.subtitle")}
             </p>
           </div>
 
@@ -149,7 +152,6 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Carousel */}
         <div
           className="relative overflow-hidden cursor-grab active:cursor-grabbing"
           onMouseDown={handleDragStart}
@@ -163,16 +165,13 @@ export default function TestimonialsSection() {
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{
-              transform: `translateX(calc(-${
-                currentIndex * 100
-              }% + ${translateX}px))`,
+              transform: `translateX(calc(-${currentIndex * 100}% + ${translateX}px))`,
             }}
           >
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="shrink-0 w-full px-2">
                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-4xl mx-auto">
                   <div className="flex flex-col md:flex-row">
-                    {/* Image Section */}
                     <div className="md:w-1/2 relative h-64 md:h-auto">
                       <img
                         src={testimonial.image}
@@ -188,7 +187,6 @@ export default function TestimonialsSection() {
                       </div>
                     </div>
 
-                    {/* Quote Section */}
                     <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-slate-800 text-white">
                       <svg
                         className="w-12 h-12 mb-6 opacity-30"
@@ -197,11 +195,9 @@ export default function TestimonialsSection() {
                       >
                         <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8z" />
                       </svg>
-
                       <p className="text-lg md:text-xl leading-relaxed mb-8 font-light">
                         &quot;{testimonial.quote}&quot;
                       </p>
-
                       <div>
                         <h3 className="text-2xl font-bold">
                           {testimonial.name}
@@ -215,7 +211,6 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Dots Indicator */}
         <div className="flex justify-center gap-2 mt-8">
           {testimonials.map((_, idx) => (
             <button
@@ -235,7 +230,6 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
-        {/* Progress Bar */}
         <div className="max-w-4xl mx-auto mt-4">
           <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
             <div

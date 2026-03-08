@@ -15,8 +15,23 @@ export interface ProjectTypes {
 }
 
 export interface ProductTypes {
-  title: string;
+  _id: string;
+  translations: {
+    uz: {
+      title: string;
+      description: string;
+    };
+    ru: {
+      title: string;
+      description: string;
+    };
+  };
   price: number;
-  category: string;
-  image?: string;
+  category: {
+    _id: string;
+    name_uz: string;
+    name_ru: string;
+  };
+  images: string[];
+  colors: string[];
 }

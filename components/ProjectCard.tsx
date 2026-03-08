@@ -1,7 +1,10 @@
 import { ProjectTypes } from "@/types/OldTypes";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function ProjectCard({ project }: { project: ProjectTypes }) {
+  const { t } = useTranslation('common');
+
   return (
     <div
       className={`grid grid-cols-1 md:grid-cols-2 gap-8 my-10 bg-gray-200 rounded-2xl overflow-hidden border border-gray-400 min-h-[500px]`}
@@ -11,20 +14,20 @@ function ProjectCard({ project }: { project: ProjectTypes }) {
       >
         <h1 className="text-3xl font-bold text-gray-900">{project.title}</h1>
         <h3 className="text-md text-gray-700 font-semibold">
-          Объект:{" "}
+          {t('projects.object')}:{" "}
           <span className="font-normal text-red-600">{project.object}</span>
         </h3>
         <h3 className="text-md text-gray-700 font-semibold">
-          Решение: <span className="font-normal">{project.solution}</span>
+          {t('projects.solution')}: <span className="font-normal">{project.solution}</span>
         </h3>
         <h3 className="text-md text-gray-700 font-semibold">
-          Результат: <span className="font-normal">{project.result}</span>
+          {t('projects.result')}: <span className="font-normal">{project.result}</span>
         </h3>
         <Link
           href={``}
           className="bg-[#173F5F] text-white rounded-lg py-2 px-6"
         >
-          Узнать больше
+          {t('projects.learnMore')}
         </Link>
       </div>
       <div className="h-full">

@@ -1,23 +1,25 @@
+"use client";
+
 import { ArrowRight, Compass } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
 
 const ENGINEER_IMAGE_PLACEHOLDER = "./heroim.png";
 
 function HeroSection() {
+  const { t } = useClientTranslation("common"); // ✅
+
   return (
     <section className="relative w-full overflow-hidden bg-white">
-      <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 relative z-10">
+      <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-2 relative z-10">
         <div className="w-full">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-            Инженерия <span className="text-red-600">безопасности.</span>
-            <br />
-            От идеи до реализации.
+          <h1 className="text-3xl sm:text-4xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-4">
+            {t("hero.title")}
           </h1>
 
           <p className="text-base text-gray-600 mb-8 max-w-lg">
-            Проектирование, поставка и монтаж систем безопасности и
-            автоматизации по стандартам промышленного уровня.
+            {t("hero.subtitle")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -25,14 +27,14 @@ function HeroSection() {
               href={"/"}
               className="px-6 py-3 bg-[#173F5F] text-white font-medium text-base rounded-lg shadow-lg hover:bg-[#122f44] transition-colors flex items-center justify-center min-w-[190px] gap-2"
             >
-              Вызвать инженера <ArrowRight size={14} />
+              {t("hero.callEngineer")} <ArrowRight size={14} />
             </Link>
 
             <Link
               href={"/catalog"}
               className="px-6 py-3 text-[#173F5F] font-medium text-base rounded-lg border border-[#173F5F] bg-white hover:bg-gray-50 transition-colors flex items-center justify-center min-w-[190px]"
             >
-              Перейти в каталог
+              {t("hero.goToCatalog")}
             </Link>
           </div>
         </div>
@@ -54,9 +56,7 @@ function HeroSection() {
 
           <div className="absolute -bottom-10 left-0 lg:left-[0%] w-full sm:w-[350px] p-6 bg-white rounded-lg border border-gray-300 z-30 transform -translate-y-1/2">
             <p className="text-sm font-medium text-gray-700">
-              От проектирования до пусконаладки –{" "}
-              <br className="hidden sm:inline" /> все инженерные процессы в
-              одних руках
+              {t("hero.engineeringQuote")}
             </p>
           </div>
         </div>

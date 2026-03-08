@@ -1,0 +1,208 @@
+{
+  "hero": {
+    "title": "Sizning biznesingiz uchun eng yaxshi yechimlar",
+    "subtitle": "Zamonaviy texnologiyalar bilan ishingizni rivojlantiring",
+    "callEngineer": "Muhandisni chaqirish",
+    "goToCatalog": "Katalogga o'tish",
+    "engineeringQuote": "Loyihalashdan ishga tushirishgacha — barcha muhandislik jarayonlari bir qo'lda"
+  },
+  "products": {
+    "title": "Mahsulotlar",
+    "description": "Bizning mahsulotlar katalogimiz",
+    "bestOffers": "Eng yaxshi",
+    "offers": "takliflar",
+    "forYourObject": "ob'ektingiz uchun",
+    "loading": "Yuklanmoqda..."
+  },
+  "services": {
+    "title": "Xizmatlar",
+    "description": "Biz taklif qiladigan xizmatlar",
+    "fullCycleTitle1": "Biz amalga oshiramiz",
+    "fullCycleHighlight": "to'liq sikl",
+    "fullCycleTitle2": "muhandislik ishlari",
+    "helpText": "Ob'ektingiz uchun optimal yechim tanlashda yordam beramiz.",
+    "learnMore": "Batafsil",
+    "requestQuote": "KP so'rash",
+    "items": {
+      "design": {
+        "title": "Tizimlarni loyihalash",
+        "description": "Barcha normalar, standartlar va ob'ekt xususiyatlarini hisobga olgan holda batafsil muhandislik loyihalarini ishlab chiqamiz. Mutaxassislarimiz videokuzatuv tizimlari, yong'in signalizatsiyasi, yong'in o'chirish va boshqa muhandislik tarmoqlari uchun optimal yechimlarni yaratadi."
+      },
+      "installation": {
+        "title": "Montaj va ishga tushirish",
+        "description": "Professional montaj, ulanish va uskunani sozlashni amalga oshiramiz, keyin ishga tushirishni. Faqat sertifikatlangan materiallar va asboblardan foydalanamiz, barcha ishlar tajribali muhandislar nazorati ostida amalga oshiriladi."
+      },
+      "maintenance": {
+        "title": "Texnik xizmat ko'rsatish",
+        "description": "Xavfsizlik tizimlarining muntazam servis xizmatini, diagnostikasini va profilaktikasini ta'minlaymiz. Muhandislarimiz uskunaning barqaror ishlashini nazorat qiladi, nosozliklarni bartaraf etadi va rejalashtirilgan tekshiruvlarni o'tkazadi."
+      }
+    }
+  },
+  "contact": {
+    "title": "Aloqa",
+    "description": "Biz bilan bog'laning"
+  },
+  "projects": {
+    "title": "Ishonch bilan ishonilgan loyihalar",
+    "subtitle": "butun mamlakat kompaniyalari",
+    "items": {
+      "technoPlant": {
+        "title": "«TechnoPlant» ishlab chiqarish majmuasi",
+        "object": "Sanoat korxonasi, Toshkent",
+        "solution": "Videokuzatuv va yong'in signalizatsiyasi tizimi",
+        "result": "Hududning to'liq qoplamasi, kechayu kunduz nazorat"
+      },
+      "goldenTower": {
+        "title": "«Golden Tower» turar-joy majmuasi",
+        "object": "Ko'p qavatli uy, Toshkent",
+        "solution": "Domofonlar va avtoturargohda kameralar o'rnatish",
+        "result": "Aholi va mulk xavfsizligini oshirish"
+      },
+      "businessCity": {
+        "title": "«Business City» ofis markazi",
+        "object": "Tijorat mulki, Toshkent",
+        "solution": "SKUD va yong'in sensorlarining integratsiyalashgan tizimi",
+        "result": "Kirishni avtomatlashtirish va xavfsizlik me'yorlariga muvofiqlik"
+      }
+    },
+    "object": "Ob'ekt",
+    "solution": "Yechim",
+    "result": "Natija",
+    "learnMore": "Batafsil ma'lumot"
+  },
+  "testimonials": {
+    "title": "Mijozlarimizning",
+    "titleHighlight": "fikrlari",
+    "subtitle": "Biz mijozlarimiz bilan birgalikda erishgan natijalar bilan faxrlanamiz va ularning fikrlarini qadrlaymiz.",
+    "items": {
+      "timur": {
+        "name": "Timur Ahmadjonov",
+        "username": "@uztech_indst",
+        "quote": "Biz mijozlarimiz bilan birgalikda erishgan natijalar bilan faxrlanamiz va ularning fikrlarini qadrlaymiz."
+      },
+      "rustam": {
+        "name": "Rustam Hamido",
+        "username": "@yangihayot",
+        "quote": "Kirishni nazorat qilish tizimini o'rnatdik, barqaror ishlaydi. Xodimlar tushunarli, jonli."
+      },
+      "aziza": {
+        "name": "Aziza Karimova",
+        "username": "@aziza_tech",
+        "quote": "Har bir loyihaga professional yondashuv. Ish sifati eng yuqori darajada, tavsiya qilaman!"
+      },
+      "shohruh": {
+        "name": "Shohrux Usmonov",
+        "username": "@shohruh_dev",
+        "quote": "Ajoyib mutaxassislar jamoasi. Barcha ishlar muddatda va sifat kafolati bilan bajarildi."
+      }
+    }
+  },
+  "systems": {
+    "title": {
+      "part1": "Sizning ob'ektingiz uchun",
+      "part2": "mos",
+      "part3": "tizimni tanlang"
+    },
+    "items": {
+      "cameras": {
+        "title": "Videokuzatuv tizimlari",
+        "description": "To'liq vizual nazorat uchun kameralar, videoregistratorlar va aksessuarlar."
+      },
+      "doorbell": {
+        "title": "Aqlli eshik qo'ng'iroqlari",
+        "description": "WiFi va bulutli saqlashni qo'llab-quvvatlaydigan zamonaviy videodomofonlar."
+      },
+      "all": {
+        "title": "Barcha mahsulotlar",
+        "description": ""
+      },
+      "compact": {
+        "title": "Kompakt kameralar",
+        "description": "Yashirin kuzatuv va kichik xonalar uchun miniatyur kameralar."
+      },
+      "sensors": {
+        "title": "Tutun va xavfsizlik sensorlari",
+        "description": "Tutun sensorlari, gaz sizib chiqishi va boshqa erta ogohlantirish tizimlari."
+      }
+    }
+  },
+  "help": {
+    "title": "Biz sizga yordam beramiz",
+    "subtitle": "loyiha bilan",
+    "description": "Xavfsizlik tizimlari bo'yicha bepul maslahat oling. Mutaxassislarimiz sizning ob'ektingiz uchun optimal yechim tanlashda yordam beradi.",
+    "contactUs": "Biz bilan bog'laning"
+  },
+  "footer": {
+    "description": "Biznes va uy uchun ishonchli muhandislik yechimlari. Yong'in o'chirish va videokuzatuvning kompleks tizimlari.",
+    "sections": {
+      "documents": {
+        "title": "Bo'limlar",
+        "links": {
+          "privacy": "Maxfiylik",
+          "agreement": "Kelishuv",
+          "payment": "To'lov va yetkazib berish"
+        }
+      },
+      "policy": {
+        "title": "Hujjatlar va siyosat:",
+        "links": {
+          "phone": "+998 (90) 123-45-67",
+          "email": "info@engineeringpro.uz",
+          "address": "Toshkent, Amir Temur ko'chasi, 45"
+        }
+      },
+      "contact": {
+        "title": "Aloqa ma'lumotlari:",
+        "links": {
+          "home": "Bosh sahifa",
+          "catalog": "Mahsulotlar katalogi",
+          "about": "Kompaniya haqida",
+          "contacts": "Aloqa",
+          "services": "Xizmatlar va yechimlar",
+          "projects": "Bizning ishlarimiz"
+        }
+      }
+    },
+    "copyright": "Barcha huquqlar himoyalangan",
+    "developedBy": "Ishlab chiquvchi",
+    "designedBy": "Dizayner"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "products": "Mahsulotlar",
+    "about": "Biz haqimizda",
+    "solutions": "Yechimlar",
+    "contacts": "Aloqa"
+  },
+  "header": {
+    "searchProducts": "Mahsulotlarni qidirish",
+    "login": "Kirish"
+  },
+  "notFound": {
+    "title": "Sahifa topilmadi",
+    "description": "Kechirasiz, so'ralgan sahifa mavjud emas yoki o'chirilgan.",
+    "goHome": "Bosh sahifaga"
+  },
+  "currency": "So'm",
+  "products-page": {
+    "searchPlaceholder": "Mahsulot qidirish...",
+    "results": "ta mahsulot",
+    "categories": {
+      "all": "Barchasi",
+      "bathrobe": "Xalatlar",
+      "towel": "Sochiqlar",
+      "set": "To'plamlar",
+      "accessories": "Aksessuarlar"
+    },
+    "sort": {
+      "newest": "Yangilari",
+      "price_asc": "Arzon avval",
+      "price_desc": "Qimmat avval"
+    },
+    "notFound": {
+      "title": "Mahsulot topilmadi",
+      "description": "Boshqa kalit so'z bilan qidiring",
+      "clearSearch": "Qidiruvni tozalash"
+    }
+  }
+}
