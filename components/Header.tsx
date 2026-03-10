@@ -2,12 +2,12 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import LanguageSwitcher from "./LanguageSwitcher";
+import Image from "next/image";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { RootState } from "@/lib/store/store";
 import { useSelector } from "react-redux";
-import Image from "next/image";
-import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
-import LanguageSwitcher from "./LanguageSwitcher";
+import { useClientTranslation } from "@/hooks/useClientTranslation";
 
 const NAV_LINKS = [
   { href: "/", labelKey: "nav.home" },
@@ -18,7 +18,7 @@ const NAV_LINKS = [
 ];
 
 function Header() {
-  const { t } = useClientTranslation("common"); // ✅
+  const { t } = useClientTranslation("common");
   const searchWrapperRef = useRef(null);
   const searchInputRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -105,13 +105,6 @@ function Header() {
                 </span>
               </button>
             </div>
-
-            <Link
-              href={"/login"}
-              className="flex items-center justify-center px-3 sm:px-4 h-9 bg-[#173F5F] text-white font-medium text-sm rounded-lg min-w-0 lg:min-w-[120px] cursor-pointer transition-colors border-none hover:bg-[#122f44]"
-            >
-              {t("header.login")}
-            </Link>
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}

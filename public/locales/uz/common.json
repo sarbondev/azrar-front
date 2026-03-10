@@ -175,8 +175,7 @@
     "contacts": "Aloqa"
   },
   "header": {
-    "searchProducts": "Mahsulotlarni qidirish",
-    "login": "Kirish"
+    "searchProducts": "Mahsulotlarni qidirish"
   },
   "notFound": {
     "title": "Sahifa topilmadi",

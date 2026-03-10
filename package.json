@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "npm run lint",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",

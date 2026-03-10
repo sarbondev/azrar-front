@@ -175,8 +175,7 @@
     "contacts": "Контакты"
   },
   "header": {
-    "searchProducts": "Поиск товаров",
-    "login": "Войти"
+    "searchProducts": "Поиск товаров"
   },
   "notFound": {
     "title": "Страница не найдена",

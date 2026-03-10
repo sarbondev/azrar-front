@@ -12,7 +12,7 @@ function SystemCard({
   system: SystemTypes;
   isLast?: boolean;
 }) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   if (system.id === "all") {
@@ -20,7 +20,8 @@ function SystemCard({
       <div className="rounded-3xl bg-[#2c4a5e] flex items-center justify-center h-full hover:shadow-xl hover:bg-[#1f3747] transition-all duration-300 cursor-pointer select-none min-h-[280px]">
         <div className="text-center px-6">
           <p className="text-white text-xl md:text-3xl font-bold flex items-center gap-3 justify-center">
-            {t('systems.items.all.title')} <ArrowRight className="w-6 md:w-8 h-6 md:h-8" />
+            {t("systems.items.all.title")}{" "}
+            <ArrowRight className="w-6 md:w-8 h-6 md:h-8" />
           </p>
         </div>
       </div>
