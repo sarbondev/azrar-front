@@ -1,3 +1,7 @@
+export type languages = "uz" | "ru";
+
+export type Translations<T> = Record<languages, T>;
+
 export interface SystemTypes {
   id: string;
   title: string;

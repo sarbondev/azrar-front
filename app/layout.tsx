@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import { Lato } from "next/font/google";
-import StoreProvider from "@/lib/store/StoreProvider";
+import StoreProvider from "@/store/StoreProvider";
 import "./globals.css";
 import Footer from "@/components/Footer";
 

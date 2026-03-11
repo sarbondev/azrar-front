@@ -2,7 +2,7 @@
 
 import React from "react";
 import SystemCard from "@/components/SystemCard";
-import { SystemTypes } from "@/types/OldTypes";
+import { SystemTypes } from "@/types/SystemTypes";
 import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
 
 const SYSTEMS_RAW: SystemTypes[] = [
@@ -42,7 +42,7 @@ const SYSTEMS_RAW: SystemTypes[] = [
 ];
 
 export default function SystemsSection() {
-  const { t, isMounted } = useClientTranslation("common"); // ✅
+  const { t, isMounted } = useClientTranslation("common");
 
   const translatedSystems = SYSTEMS_RAW.map((system) => ({
     ...system,
@@ -51,7 +51,6 @@ export default function SystemsSection() {
   }));
 
   if (!isMounted) {
-    // ✅ skeleton
     return (
       <main className="min-h-screen bg-white p-4 md:p-8 animate-pulse">
         <div className="container mx-auto">

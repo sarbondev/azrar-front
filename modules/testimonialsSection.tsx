@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
+import { useClientTranslation } from "@/hooks/useClientTranslation";
 
 const RAW_TESTIMONIALS = [
   {
@@ -37,7 +37,7 @@ export default function TestimonialsSection() {
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
-  const { t, isMounted } = useClientTranslation("common"); // ✅
+  const { t, isMounted } = useClientTranslation("common");
 
   const testimonials = isMounted
     ? RAW_TESTIMONIALS.map((item) => ({
@@ -96,7 +96,6 @@ export default function TestimonialsSection() {
   };
 
   if (!isMounted) {
-    // ✅ skeleton
     return (
       <section className="py-16 px-4 animate-pulse">
         <div className="container mx-auto">

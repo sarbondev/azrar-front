@@ -3,18 +3,18 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
 import { API_URL } from "@/lib/config";
-import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
-import { ProductTypes } from "@/types/OldTypes";
+import { useClientTranslation } from "@/hooks/useClientTranslation";
+import { ProductTypes } from "@/types/ProductTypes";
 
 export default function ProductsSection() {
   const [products, setProducts] = useState<ProductTypes[]>([]);
   const [loading, setLoading] = useState(true);
-  const { t, isMounted } = useClientTranslation("common"); // ✅
+  const { t, isMounted } = useClientTranslation("common");
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/products`);
+        const response = await fetch(`${API_URL}/products`);
         const data = await response.json();
         if (data.success) {
           setProducts(data.data.products || []);
@@ -29,7 +29,6 @@ export default function ProductsSection() {
     fetchProducts();
   }, []);
 
-  // ✅ mount + loading bitta skeleton da
   if (!isMounted || loading) {
     return (
       <main className="min-h-screen bg-white p-4 md:p-8 animate-pulse">

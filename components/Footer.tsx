@@ -4,7 +4,7 @@ import { Facebook, Instagram, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useClientTranslation } from "@/hooks/useClientTranslation"; // ✅
+import { useClientTranslation } from "@/hooks/useClientTranslation";
 
 const icons = [{ label: Instagram }, { label: Send }, { label: Facebook }];
 
@@ -39,7 +39,7 @@ const RAW_LINKS = [
 ];
 
 function Footer() {
-  const { t, isMounted } = useClientTranslation("common"); // ✅
+  const { t, isMounted } = useClientTranslation("common");
 
   const links = isMounted
     ? RAW_LINKS.map((section) => ({
@@ -92,12 +92,12 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="container mx-auto p-6 md:py-10 text-white/80 flex items-center justify-between">
+      <div className="container mx-auto p-6 md:py-10 text-white/80 items-center grid grid-cols-1 md:grid-cols-2 gap-4">
         <p>
           {new Date().getFullYear()} Azrar Fire System.{" "}
           {isMounted ? t("footer.copyright") : ""}
         </p>
-        <ul>
+        <ul className="flex flex-col lg:items-end">
           <li>
             {isMounted ? t("footer.developedBy") : ""}{" "}
             <a href="#" className="underline">

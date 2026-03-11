@@ -5,7 +5,7 @@ import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
-import { RootState } from "@/lib/store/store";
+import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 import { useClientTranslation } from "@/hooks/useClientTranslation";
 

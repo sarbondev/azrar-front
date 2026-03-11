@@ -6,9 +6,8 @@ import React, { useState, useEffect, useRef } from "react";
 const EngineeringServices = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sectionsRef = useRef<Array<HTMLDivElement | null>>([]);
-  const { t, isMounted } = useClientTranslation("common"); // ✅ isMounted olinadi
+  const { t, isMounted } = useClientTranslation("common");
 
-  // ✅ services useMemo o'rniga isMounted ga bog'liq
   const services = isMounted
     ? [
         {

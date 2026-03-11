@@ -1,9 +1,9 @@
-import { ProjectTypes } from "@/types/OldTypes";
+import { ProjectTypes } from "@/types/ProjectTypes";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 function ProjectCard({ project }: { project: ProjectTypes }) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   return (
     <div
@@ -12,27 +12,29 @@ function ProjectCard({ project }: { project: ProjectTypes }) {
       <div
         className={`flex flex-col space-y-4 items-start justify-center p-10`}
       >
-        <h1 className="text-3xl font-bold text-gray-900">{project.title}</h1>
+        <h1 className="text-3xl font-bold text-red-600">{project.title}</h1>
         <h3 className="text-md text-gray-700 font-semibold">
-          {t('projects.object')}:{" "}
-          <span className="font-normal text-red-600">{project.object}</span>
+          {t("projects.object")}:{" "}
+          <span className="font-normal">{project.address}</span>
         </h3>
         <h3 className="text-md text-gray-700 font-semibold">
-          {t('projects.solution')}: <span className="font-normal">{project.solution}</span>
+          {t("projects.solution")}:{" "}
+          <span className="font-normal">{project.solution}</span>
         </h3>
         <h3 className="text-md text-gray-700 font-semibold">
-          {t('projects.result')}: <span className="font-normal">{project.result}</span>
+          {t("projects.result")}:{" "}
+          <span className="font-normal">{project.result}</span>
         </h3>
         <Link
           href={``}
           className="bg-[#173F5F] text-white rounded-lg py-2 px-6"
         >
-          {t('projects.learnMore')}
+          {t("projects.learnMore")}
         </Link>
       </div>
       <div className="h-full">
         <img
-          src={project.image}
+          src={project.images[0]}
           alt={project.title}
           className="w-full h-full object-cover"
         />
