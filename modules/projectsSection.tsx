@@ -38,8 +38,6 @@ const ProjectSection = () => {
     );
   }
 
-  console.log(projects);
-
   return (
     <div className="min-h-screen">
       <div className="container mx-auto mt-24 mb-10 px-4 sm:px-6 lg:px-8">

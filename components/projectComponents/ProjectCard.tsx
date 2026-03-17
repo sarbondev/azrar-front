@@ -1,9 +1,10 @@
-import { ProjectTypes } from "@/types/ProjectTypes";
+import { Lang, ProjectTypes } from "@/types/ProjectTypes";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 function ProjectCard({ project }: { project: ProjectTypes }) {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
+  const currentLanguage = i18n.language as Lang;
 
   return (
     <div
@@ -12,18 +13,26 @@ function ProjectCard({ project }: { project: ProjectTypes }) {
       <div
         className={`flex flex-col space-y-4 items-start justify-center p-10`}
       >
-        <h1 className="text-3xl font-bold text-red-600">{project.title}</h1>
+        <h1 className="text-3xl font-bold text-red-600">
+          {project.translations[currentLanguage].title}
+        </h1>
         <h3 className="text-md text-gray-700 font-semibold">
           {t("projects.object")}:{" "}
-          <span className="font-normal">{project.address}</span>
+          <span className="font-normal">
+            {project.translations[currentLanguage].address}
+          </span>
         </h3>
         <h3 className="text-md text-gray-700 font-semibold">
           {t("projects.solution")}:{" "}
-          <span className="font-normal">{project.solution}</span>
+          <span className="font-normal">
+            {project.translations[currentLanguage].solution}
+          </span>
         </h3>
         <h3 className="text-md text-gray-700 font-semibold">
           {t("projects.result")}:{" "}
-          <span className="font-normal">{project.result}</span>
+          <span className="font-normal">
+            {project.translations[currentLanguage].result}
+          </span>
         </h3>
         <Link
           href={``}
@@ -35,7 +44,7 @@ function ProjectCard({ project }: { project: ProjectTypes }) {
       <div className="h-full">
         <img
           src={project.images[0]}
-          alt={project.title}
+          alt={project.translations[currentLanguage].title}
           className="w-full h-full object-cover"
         />
       </div>

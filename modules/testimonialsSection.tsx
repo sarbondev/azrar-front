@@ -3,33 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useClientTranslation } from "@/hooks/useClientTranslation";
-
-const RAW_TESTIMONIALS = [
-  {
-    id: 1,
-    key: "timur",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
-  },
-  {
-    id: 2,
-    key: "rustam",
-    image:
-      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=600&h=600&fit=crop",
-  },
-  {
-    id: 3,
-    key: "aziza",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop",
-  },
-  {
-    id: 4,
-    key: "shohruh",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=600&fit=crop",
-  },
-];
+import { useGetTestimonialsQuery } from "@/services/testimonials";
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,19 +13,17 @@ export default function TestimonialsSection() {
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const { t, isMounted } = useClientTranslation("common");
 
-  const testimonials = isMounted
-    ? RAW_TESTIMONIALS.map((item) => ({
-        ...item,
-        name: t(`testimonials.items.${item.key}.name`),
-        username: t(`testimonials.items.${item.key}.username`),
-        quote: t(`testimonials.items.${item.key}.quote`),
-      }))
-    : RAW_TESTIMONIALS.map((item) => ({
-        ...item,
-        name: "",
-        username: "",
-        quote: "",
-      }));
+  const {
+    data: response,
+    isFetching,
+    isError,
+    isLoading,
+  } = useGetTestimonialsQuery();
+
+  const { testimonials, total } = response?.data || {
+    testimonials: [],
+    total: 0,
+  };
 
   useEffect(() => {
     startAutoPlay();
@@ -168,20 +140,20 @@ export default function TestimonialsSection() {
             }}
           >
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="shrink-0 w-full px-2">
+              <div key={testimonial._id} className="shrink-0 w-full px-2">
                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 max-w-4xl mx-auto">
                   <div className="flex flex-col md:flex-row">
                     <div className="md:w-1/2 relative h-64 md:h-auto">
                       <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
+                        src={testimonial.client.image}
+                        alt={testimonial.client.fullName}
                         className="w-full h-full object-cover"
                         draggable="false"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                       <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
                         <span className="text-sm font-medium text-gray-800">
-                          {testimonial.username}
+                          {testimonial.client.fullName}
                         </span>
                       </div>
                     </div>
@@ -195,11 +167,11 @@ export default function TestimonialsSection() {
                         <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-2.2 1.8-4 4-4V8z" />
                       </svg>
                       <p className="text-lg md:text-xl leading-relaxed mb-8 font-light">
-                        &quot;{testimonial.quote}&quot;
+                        &quot;{testimonial.description}&quot;
                       </p>
                       <div>
                         <h3 className="text-2xl font-bold">
-                          {testimonial.name}
+                          {testimonial.client.fullName}
                         </h3>
                       </div>
                     </div>
