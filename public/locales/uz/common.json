@@ -1,4 +1,7 @@
 {
+  "common": {
+    "currency": "So'm"
+  },
   "hero": {
     "title": "Sizning biznesingiz uchun eng yaxshi yechimlar",
     "subtitle": "Zamonaviy texnologiyalar bilan ishingizni rivojlantiring",
@@ -14,6 +17,7 @@
     "forYourObject": "ob'ektingiz uchun",
     "loading": "Yuklanmoqda...",
     "viewAll": "Barchasini ko'rish",
+    "colors": "Barcha ranglar",
     "filter": {
       "all": "Barcha mahsulotlar",
       "reset": "Filtrni tozalash",

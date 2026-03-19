@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { LanguageSwitcher } from "@/features/language-switcher";
 import Image from "next/image";
+import { LanguageSwitcher } from "@/features/language-switcher";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { RootState } from "@/shared/store/store";
 import { useSelector } from "react-redux";
@@ -19,8 +19,6 @@ const NAV_LINKS = [
 
 function Header() {
   const { t } = useClientTranslation("common");
-  const searchWrapperRef = useRef<HTMLDivElement>(null);
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cart = useSelector((state: RootState) => state.cart);
   const { totalItems } = cart;
@@ -45,7 +43,7 @@ function Header() {
         onClick={() => setIsMenuOpen(false)}
       />
 
-      <header className="w-full bg-white h-16 min-h-16 sticky top-0 z-50 p-2 shadow-sm">
+      <header className="w-full bg-white h-16 min-h-16 sticky top-0 z-50 p-2">
         <div className="container mx-auto flex items-center justify-between py-2 h-full">
           <Link
             href={"/"}
@@ -61,7 +59,10 @@ function Header() {
             />
           </Link>
 
-          <nav className="hidden lg:flex flex-1 h-full" aria-label="Main navigation">
+          <nav
+            className="hidden lg:flex flex-1 h-full"
+            aria-label="Main navigation"
+          >
             <ul className="flex gap-6 justify-start items-center h-full m-0 p-0 list-none">
               {NAV_LINKS.map(({ href, labelKey }) => (
                 <li key={labelKey}>
@@ -77,22 +78,6 @@ function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-4 justify-end h-full">
-            <div
-              ref={searchWrapperRef}
-              className="hidden lg:flex relative items-center overflow-hidden w-[260px] h-10 min-h-10 rounded-lg border border-gray-200 px-3 transition-all duration-300 ease-in-out"
-            >
-              <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center text-gray-500 h-[26px] w-[26px] p-0 z-10 pointer-events-none">
-                <Search className="h-[17px] w-[17px]" strokeWidth={2} />
-              </div>
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder={t("header.searchProducts")}
-                autoComplete="off"
-                className="opacity-100 w-full bg-transparent pointer-events-auto pl-8 pr-2 min-w-0 border-none h-full transition-all duration-300 relative z-10 text-sm focus:outline-none text-gray-900"
-              />
-            </div>
-
             <div className="relative h-full flex items-center">
               <LanguageSwitcher />
               <Link

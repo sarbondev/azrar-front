@@ -13,7 +13,9 @@ export interface ProductsResponse {
 }
 
 export interface ProductDetailResponse {
-  product: ProductTypes;
+  data: {
+    product: ProductTypes;
+  };
   message: string;
 }
 

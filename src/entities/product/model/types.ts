@@ -1,4 +1,5 @@
 import { Translations } from "@/shared/types";
+import { colorTypes } from "@/shared/types/color";
 
 export interface ProductTranslation {
   title: string;
@@ -14,7 +15,7 @@ export interface ProductTypes {
     name_ru: string;
   };
   images: string[];
-  colors: string[];
+  colors: colorTypes[];
   stock: number;
   translations: Translations<ProductTranslation>;
 }
