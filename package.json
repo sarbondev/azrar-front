@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint app components modules lib services types --ext .ts,.tsx,.js,.jsx"
+    "lint": "next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
