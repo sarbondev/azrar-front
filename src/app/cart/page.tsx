@@ -3,118 +3,124 @@
 import { formatPrice } from "@/shared/lib/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/shared/store/store";
-import {
-  CartItem,
-  clearCart,
-  decreaseQuantity,
-  increaseQuantity,
-  removeFromCart,
-} from "@/entities/cart";
+import { CartItem, clearCart } from "@/entities/cart";
 import { useClientTranslation } from "@/shared/i18n";
+import { ShoppingBag, Trash2 } from "lucide-react";
+import Link from "next/link";
+import CartCard from "@/entities/cart/ui/CartCard";
 
 export default function CartPage() {
   const dispatch = useDispatch();
   const { t, isMounted } = useClientTranslation("common");
-
   const { items, totalItems, totalPrice } = useSelector(
     (state: RootState) => state.cart,
   );
 
   if (!isMounted) {
     return (
-      <div className="bg-white min-h-screen flex items-center justify-center">
-        <div className="animate-pulse space-y-4 w-full max-w-2xl p-6">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-pulse space-y-4 w-full max-w-2xl px-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-24 bg-gray-200 rounded-lg" />
+            <div key={i} className="h-28 bg-gray-200 rounded-2xl" />
           ))}
         </div>
       </div>
     );
   }
 
-  return (
-    <div
-      className="bg-white min-h-screen flex flex-col shadow-[-4px_0_20px_rgba(0,0,0,0.1)]"
-      style={{ animation: "slideIn 0.3s ease-out" }}
-    >
-      <div className="flex-1 overflow-y-auto p-4">
-        {totalItems === 0 ? (
-          <div className="flex items-center justify-center h-full text-[#737373]">
-            <p>{t("cart.empty")}</p>
-          </div>
-        ) : (
-          items.map((item: CartItem) => (
-            <div
-              key={`${item._id}`}
-              className="flex gap-4 p-4 border border-[#e5e5e5] rounded-lg mb-4 relative"
-            >
-              <img
-                src={item.images?.[0]}
-                alt={item.translations?.uz?.title || ""}
-                className="w-20 h-20 object-cover rounded-md"
-                loading="lazy"
-              />
-
-              <div className="flex-1">
-                <h3 className="text-base font-semibold m-0 mb-1">
-                  {item.translations?.uz?.title || ""}
-                </h3>
-                <p className="text-base font-bold mx-2 my-0">
-                  {formatPrice(item.price)} {t("currency")}
-                </p>
-
-                <div className="flex items-center gap-2 mt-2">
-                  <button
-                    onClick={() => dispatch(decreaseQuantity(item))}
-                    className="w-7 h-7 border border-[#e5e5e5] bg-white rounded cursor-pointer text-xl flex items-center justify-center transition-all duration-200 hover:bg-[#f5f5f5] hover:border-black"
-                  >
-                    −
-                  </button>
-                  <span className="font-semibold min-w-7.5 text-center">
-                    {item.quantity}
-                  </span>
-                  <button
-                    onClick={() => dispatch(increaseQuantity(item))}
-                    className="w-7 h-7 border border-[#e5e5e5] bg-white rounded cursor-pointer text-xl flex items-center justify-center transition-all duration-200 hover:bg-[#f5f5f5] hover:border-black"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-
-              <button
-                onClick={() => dispatch(removeFromCart(item))}
-                className="absolute top-4 right-4 bg-transparent border-0 text-base cursor-pointer p-1 opacity-60 transition-opacity duration-200 hover:opacity-100"
-                title={t("cart.remove")}
-              >
-                {t("cart.removeBtn")}
-              </button>
-            </div>
-          ))
-        )}
+  if (totalItems === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center gap-6 px-4">
+        <div className="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center">
+          <ShoppingBag className="w-10 h-10 text-gray-300" />
+        </div>
+        <div className="text-center">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            {t("cart.empty")}
+          </h2>
+          <p className="text-gray-400 text-sm">{t("cart.emptyDescription")}</p>
+        </div>
+        <Link
+          href="/products"
+          className="bg-[#173F5F] hover:bg-[#0f2d45] text-white text-sm font-medium px-8 py-3 rounded-xl transition-colors"
+        >
+          {t("cart.continueShopping")}
+        </Link>
       </div>
+    );
+  }
 
-      {totalItems > 0 && (
-        <div className="border-t border-[#e5e5e5] p-6 bg-[#fafafa]">
-          <div className="flex justify-between items-center mb-4 text-lg">
-            <span>{t("cart.total")}:</span>
-            <strong>
-              {formatPrice(totalPrice)} {t("currency")}
-            </strong>
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">
+              {t("cart.title")}
+            </h1>
+            <p className="text-sm text-gray-400 mt-1">
+              {totalItems} {t("cart.itemsCount")}
+            </p>
           </div>
-          <button
-            className="w-full p-4 bg-black text-white border-0 rounded-md font-semibold text-base cursor-pointer transition-colors duration-200 hover:bg-[#333] mb-3"
-          >
-            {t("cart.checkout")}
-          </button>
           <button
             onClick={() => dispatch(clearCart())}
-            className="w-full py-3 bg-transparent text-[#737373] border border-[#e5e5e5] rounded-md text-sm cursor-pointer transition-all duration-200 hover:border-black hover:text-black"
+            className="flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition-colors"
           >
+            <Trash2 className="w-4 h-4" />
             {t("cart.clearCart")}
           </button>
         </div>
-      )}
+
+        <div className="grid lg:grid-cols-3 gap-6">
+          {/* Items */}
+          <div className="lg:col-span-2 space-y-3">
+            {items.map((item: CartItem) => (
+              <CartCard key={item._id} item={item} />
+            ))}
+          </div>
+
+          {/* Summary */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-2xl p-6 border border-gray-200 sticky top-24">
+              <h2 className="text-base font-semibold text-gray-900 mb-4">
+                {t("cart.summary")}
+              </h2>
+
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between text-gray-500">
+                  <span>{t("cart.itemsCount")}:</span>
+                  <span>{totalItems}</span>
+                </div>
+                <div className="flex justify-between text-gray-500">
+                  <span>{t("cart.subtotal")}:</span>
+                  <span>
+                    {formatPrice(totalPrice)} {t("currency")}
+                  </span>
+                </div>
+                <hr className="border-gray-100" />
+                <div className="flex justify-between font-bold text-base text-gray-900">
+                  <span>{t("cart.total")}:</span>
+                  <span>
+                    {formatPrice(totalPrice)} {t("currency")}
+                  </span>
+                </div>
+              </div>
+
+              <button className="w-full mt-6 bg-[#173F5F] hover:bg-[#0f2d45] text-white font-semibold text-sm py-3.5 rounded-xl transition-colors">
+                {t("cart.checkout")}
+              </button>
+
+              <Link
+                href="/products"
+                className="block text-center text-sm text-gray-400 hover:text-gray-600 mt-3 transition-colors"
+              >
+                {t("cart.continueShopping")}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

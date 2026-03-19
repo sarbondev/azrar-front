@@ -1,6 +1,9 @@
 {
   "common": {
-    "currency": "So'm"
+    "currency": "So'm",
+    "addToCart": "Savatga qo'shish",
+    "view": "Ko'rish",
+    "exists": "Mahsulot savatda majvud"
   },
   "hero": {
     "title": "Sizning biznesingiz uchun eng yaxshi yechimlar",
@@ -216,5 +219,19 @@
       "description": "Boshqa kalit so'z bilan qidiring",
       "clearSearch": "Qidiruvni tozalash"
     }
+  },
+  "cart": {
+    "title": "Savat",
+    "empty": "Savat bo'sh",
+    "emptyDescription": "Hali hech narsa qo'shilmagan",
+    "continueShopping": "Xaridni davom ettirish",
+    "itemsCount": "ta mahsulot",
+    "subtotal": "Jami",
+    "total": "To'lov summasi",
+    "summary": "Buyurtma",
+    "checkout": "Buyurtma berish",
+    "clearCart": "Savatni tozalash",
+    "remove": "O'chirish",
+    "removeBtn": "×"
   }
 }

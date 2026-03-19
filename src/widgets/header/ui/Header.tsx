@@ -20,8 +20,8 @@ const NAV_LINKS = [
 function Header() {
   const { t } = useClientTranslation("common");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const cart = useSelector((state: RootState) => state.cart);
-  const { totalItems } = cart;
+  const [isMounted, setIsMounted] = useState(false);
+  const { items } = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -33,6 +33,10 @@ function Header() {
       document.body.classList.remove("overflow-hidden");
     };
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <>
@@ -91,10 +95,10 @@ function Header() {
                 />
                 <span
                   className={`${
-                    totalItems >= 1 ? "absolute" : "hidden"
+                    isMounted && items.length >= 1 ? "absolute" : "hidden"
                   } -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center leading-none font-medium`}
                 >
-                  {totalItems}
+                  {isMounted ? items.length : 0}
                 </span>
               </Link>
             </div>
