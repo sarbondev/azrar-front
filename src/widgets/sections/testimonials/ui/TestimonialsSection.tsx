@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useClientTranslation } from "@/shared/i18n";
 import { useGetTestimonialsQuery } from "@/shared/api/testimonialApi";
@@ -19,8 +19,11 @@ export default function TestimonialsSection() {
     testimonials: [],
     total: 0,
   };
+  const stopAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  }, []);
 
-  const startAutoPlay = () => {
+  const startAutoPlay = useCallback(() => {
     stopAutoPlay();
     if (testimonials.length > 0) {
       autoPlayRef.current = setInterval(
@@ -28,16 +31,12 @@ export default function TestimonialsSection() {
         5000,
       );
     }
-  };
-
-  const stopAutoPlay = () => {
-    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-  };
+  }, [testimonials.length, stopAutoPlay]);
 
   useEffect(() => {
     startAutoPlay();
     return () => stopAutoPlay();
-  }, [currentIndex, testimonials.length, startAutoPlay]);
+  }, [startAutoPlay, stopAutoPlay]);
 
   const nextSlide = () =>
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
