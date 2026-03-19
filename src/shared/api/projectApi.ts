@@ -22,10 +22,15 @@ export const projectApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),
-  endpoints: (builder) => ({
-    getProjects: builder.query<ProjectsResponse, void>({
-      query: () => "/projects",
-    }),
+  endpoints: (builder) => ({  
+    getProjects: builder.query<ProjectsResponse, Record<string, string> | void>(
+      {
+        query: (params) => ({
+          url: "/projects",
+          params: params ?? {},
+        }),
+      },
+    ),
     getProjectById: builder.query<ProjectDetailResponse, string>({
       query: (id) => `/projects/${id}`,
     }),
