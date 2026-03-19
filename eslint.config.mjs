@@ -24,6 +24,7 @@ const eslintConfig = [
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "@next/next/no-assign-module-variable": "off",
+      "react/no-unescaped-entities": "off",
     },
   },
 ];

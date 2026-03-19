@@ -13,10 +13,7 @@ export default function TestimonialsSection() {
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const { t, isMounted } = useClientTranslation("common");
 
-  const {
-    data: response,
-    isLoading,
-  } = useGetTestimonialsQuery();
+  const { data: response, isLoading } = useGetTestimonialsQuery();
 
   const { testimonials } = response?.data || {
     testimonials: [],
@@ -40,7 +37,7 @@ export default function TestimonialsSection() {
   useEffect(() => {
     startAutoPlay();
     return () => stopAutoPlay();
-  }, [currentIndex, testimonials.length]);
+  }, [currentIndex, testimonials.length, startAutoPlay]);
 
   const nextSlide = () =>
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);

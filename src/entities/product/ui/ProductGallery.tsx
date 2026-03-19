@@ -19,7 +19,7 @@ function ProductGallery({
   if (!images?.length) {
     return (
       <div className="aspect-square rounded-xl bg-gray-100 flex items-center justify-center">
-        <span className="text-gray-400">Rasm yo'q</span>
+        <span className="text-gray-400">Rasm yo&apos;q</span>
       </div>
     );
   }

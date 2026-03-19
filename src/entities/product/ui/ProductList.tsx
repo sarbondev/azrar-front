@@ -10,15 +10,10 @@ import { useQueryParams } from "@/shared/hooks/useQueryParams";
 
 // ─── Main Page ────────────────────────────────────────────
 export default function ProductsList() {
-  const { queryParams, updateQueryParams, resetQueryParams } = useQueryParams();
-  const {
-    isError,
-    isFetching,
-    isLoading,
-    data: response,
-  } = useGetProductsQuery(queryParams);
+  const { queryParams } = useQueryParams();
+  const { isLoading, data: response } = useGetProductsQuery(queryParams);
 
-  const { products, total } = response?.data || {
+  const { products } = response?.data || {
     products: [],
     total: 0,
     totalPages: 1,
