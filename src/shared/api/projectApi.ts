@@ -23,33 +23,8 @@ export const projectApi = createApi({
     baseUrl: API_URL,
   }),
   endpoints: (builder) => ({
-    getProjects: builder.query<
-      ProjectsResponse,
-      Record<string, string> | undefined
-    >({
-      query: (params) => {
-        if (!params || Object.keys(params).length === 0) {
-          return "/projects";
-        }
-        const searchParams = new URLSearchParams();
-        Object.entries(params).forEach(([key, value]) => {
-          if (value) {
-            if (value.includes(",")) {
-              const values = value
-                .split(",")
-                .map((v) => v.trim())
-                .filter(Boolean);
-              values.forEach((val) => {
-                searchParams.append(key, val);
-              });
-            } else {
-              searchParams.append(key, value);
-            }
-          }
-        });
-        const queryString = searchParams.toString();
-        return `/projects${queryString ? `?${queryString}` : ""}`;
-      },
+    getProjects: builder.query<ProjectsResponse, void>({
+      query: () => "/projects",
     }),
     getProjectById: builder.query<ProjectDetailResponse, string>({
       query: (id) => `/projects/${id}`,

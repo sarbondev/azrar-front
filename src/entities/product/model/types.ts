@@ -16,6 +16,5 @@ export interface ProductTypes {
   images: string[];
   colors: string[];
   stock: number;
-  image_urls: string[];
   translations: Translations<ProductTranslation>;
 }

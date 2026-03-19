@@ -12,7 +12,16 @@
     "bestOffers": "Eng yaxshi",
     "offers": "takliflar",
     "forYourObject": "ob'ektingiz uchun",
-    "loading": "Yuklanmoqda..."
+    "loading": "Yuklanmoqda...",
+    "viewAll": "Barchasini ko'rish",
+    "filter": {
+      "all": "Barcha mahsulotlar",
+      "reset": "Filtrni tozalash",
+      "newest": "Yangilari",
+      "price_asc": "Arzon avval",
+      "price_desc": "Qimmat avval",
+      "sortBy": "Tartiblash bo'yicha"
+    }
   },
   "services": {
     "title": "Xizmatlar",

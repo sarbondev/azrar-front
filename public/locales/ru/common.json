@@ -12,7 +12,17 @@
     "bestOffers": "Лучшие",
     "offers": "предложения",
     "forYourObject": "для вашего объекта",
-    "loading": "Загрузка..."
+    "loading": "Загрузка...",
+    "noProducts": "Товары не найдены",
+    "viewAll": "Посмотреть все",
+    "filter": {
+      "all": "Все товары",
+      "reset": "Сбросить фильтр",
+      "newest": "Новинки",
+      "price_asc": "Дешевле",
+      "price_desc": "Дороже",
+      "sortBy": "Сортировать по"
+    }
   },
   "services": {
     "title": "Услуги",
