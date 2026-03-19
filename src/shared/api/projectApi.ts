@@ -22,7 +22,7 @@ export const projectApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),
-  endpoints: (builder) => ({  
+  endpoints: (builder) => ({
     getProjects: builder.query<ProjectsResponse, Record<string, string> | void>(
       {
         query: (params) => ({
