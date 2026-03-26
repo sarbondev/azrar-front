@@ -13,7 +13,6 @@ const NAV_LINKS = [
   { href: "/", labelKey: "nav.home" },
   { href: "/products", labelKey: "nav.products" },
   { href: "/about", labelKey: "nav.about" },
-  { href: "/solutions", labelKey: "nav.solutions" },
   { href: "/contacts", labelKey: "nav.contacts" },
 ];
 
