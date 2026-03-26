@@ -5,6 +5,7 @@ import { useClientTranslation } from "@/shared/i18n";
 import { useQueryParams } from "@/shared/hooks/useQueryParams";
 import { useGetProjectsQuery } from "@/shared/api/projectApi";
 import { ProjectList } from "@/entities/project";
+import { EmptyState } from "../../emptyState/ui/EmptyState";
 
 const ProjectsSection = () => {
   const { t, isMounted } = useClientTranslation("common");
@@ -44,7 +45,21 @@ const ProjectsSection = () => {
           <span className="text-red-600">{t("projects.subtitle")}</span>
         </h2>
       </div>
-      <ProjectList projects={projects} total={total} />
+      {projects.length === 0 ? (
+        <EmptyState
+          title={t("products.notFound")}
+          description="Hozircha bu bo'limda mahsulotlar mavjud emas."
+        >
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition"
+          >
+            Qayta yuklash
+          </button>
+        </EmptyState>
+      ) : (
+        <ProjectList projects={projects} total={total} />
+      )}
     </section>
   );
 };

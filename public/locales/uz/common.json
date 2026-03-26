@@ -3,7 +3,8 @@
     "currency": "So'm",
     "addToCart": "Savatga qo'shish",
     "view": "Ko'rish",
-    "exists": "Mahsulot savatda majvud"
+    "exists": "Mahsulot savatda majvud",
+    "cancel": "Bekor qilish"
   },
   "hero": {
     "title": "Sizning biznesingiz uchun eng yaxshi yechimlar",
@@ -233,5 +234,23 @@
     "clearCart": "Savatni tozalash",
     "remove": "O'chirish",
     "removeBtn": "×"
+  },
+  "checkout": {
+    "title": "Buyurtma berish",
+    "orderSummary": "Buyurtma tarkibi",
+    "contactInfo": "Aloqa ma'lumotlari",
+    "fullName": "Ism Familiya",
+    "fullNamePlaceholder": "Ismoilov Ismoil",
+    "phone": "Telefon raqami",
+    "address": "Yetkazib berish manzili",
+    "addressPlaceholder": "Ko'cha, uy, xonadon",
+    "submit": "Buyurtma berish",
+    "submitting": "Yuborilmoqda...",
+    "submitError": "Buyurtma berishda xatolik yuz berdi"
+  },
+  "orderSuccess": {
+    "title": "Buyurtma qabul qilindi!",
+    "description": "Tez orada siz bilan bog'lanamiz.",
+    "continueShopping": "Xaridni davom ettirish"
   }
 }

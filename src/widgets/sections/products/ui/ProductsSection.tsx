@@ -5,6 +5,7 @@ import { ProductCard } from "@/entities/product";
 import { API_URL } from "@/shared/config";
 import { useClientTranslation } from "@/shared/i18n";
 import { ProductTypes } from "@/entities/product/model/types";
+import { EmptyState } from "../../emptyState/ui/EmptyState";
 
 export default function ProductsSection() {
   const [products, setProducts] = useState<ProductTypes[]>([]);
@@ -59,11 +60,25 @@ export default function ProductsSection() {
           </h2>
         </header>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
-          {products.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
-        </div>
+        {products.length === 0 ? (
+          <EmptyState
+            title={t("products.notFound")}
+            description="Hozircha bu bo'limda mahsulotlar mavjud emas."
+          >
+            <button
+              onClick={() => window.location.reload()}
+              className="px-6 py-2 bg-gray-100 rounded-full hover:bg-gray-200 transition"
+            >
+              Qayta yuklash
+            </button>
+          </EmptyState>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
+            {products.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

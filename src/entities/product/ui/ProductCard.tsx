@@ -28,10 +28,10 @@ function ProductCard({ product }: { product: ProductTypes }) {
   const image = product.images?.[0];
 
   return (
-    <div className="group relative flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all duration-300">
+    <div className="group relative flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-100 hover:border-gray-200 transition-all duration-300">
       {/* Image */}
       <Link href={`/products/${product._id}`} className="block">
-        <div className="relative overflow-hidden aspect-[3/4] bg-gray-50">
+        <div className="relative overflow-hidden bg-gray-50 h-[250px]">
           {image ? (
             <img
               src={image}
@@ -93,26 +93,25 @@ function ProductCard({ product }: { product: ProductTypes }) {
         )}
 
         {/* Price + Cart */}
-        <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-          <div>
-            <p className="text-lg font-bold text-gray-900">
-              {product.price.toLocaleString()}
-            </p>
-            <p className="text-xs text-gray-400">{t("currency")}</p>
-          </div>
-
-          <button
-            type="button"
-            disabled={isProductInCart || false}
-            onClick={() => dispatch(addToCart(product))}
-            className="flex items-center gap-2 bg-[#173F5F] hover:bg-[#0f2d45] disabled:bg-gray-200 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors duration-200"
-          >
-            <ShoppingCart className="w-4 h-4" />
-            <span className="hidden sm:inline">
-              {isProductInCart ? t("common.exists") : t("common.addToCart")}
-            </span>
-          </button>
+        <div className="border-t border-gray-100" />
+        <div>
+          <p className="text-lg font-bold text-gray-900">
+            {product.price.toLocaleString()}
+          </p>
+          <p className="text-xs text-gray-400">{t("currency")}</p>
         </div>
+
+        <button
+          type="button"
+          disabled={isProductInCart || false}
+          onClick={() => dispatch(addToCart(product))}
+          className="flex items-center justify-center gap-2 bg-[#173F5F] hover:bg-[#0f2d45] disabled:bg-gray-400 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors duration-200"
+        >
+          <ShoppingCart className="w-4 h-4" />
+          <span className="hidden sm:inline">
+            {isProductInCart ? t("common.exists") : t("common.addToCart")}
+          </span>
+        </button>
       </div>
     </div>
   );

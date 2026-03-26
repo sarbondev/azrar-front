@@ -3,15 +3,18 @@
 import { formatPrice } from "@/shared/lib/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/shared/store/store";
-import { CartItem, clearCart } from "@/entities/cart";
+import { clearCart } from "@/entities/cart";
 import { useClientTranslation } from "@/shared/i18n";
 import { ShoppingBag, Trash2 } from "lucide-react";
 import Link from "next/link";
 import CartCard from "@/entities/cart/ui/CartCard";
+import { useState } from "react";
+import CheckoutDialog from "@/entities/cart/ui/CheckoutDialog";
 
 export default function CartPage() {
   const dispatch = useDispatch();
   const { t, isMounted } = useClientTranslation("common");
+  const [isOpen, setIsOpen] = useState(false);
   const { items, totalItems, totalPrice } = useSelector(
     (state: RootState) => state.cart,
   );
@@ -51,76 +54,86 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              {t("cart.title")}
-            </h1>
-            <p className="text-sm text-gray-400 mt-1">
-              {totalItems} {t("cart.itemsCount")}
-            </p>
-          </div>
-          <button
-            onClick={() => dispatch(clearCart())}
-            className="flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition-colors"
-          >
-            <Trash2 className="w-4 h-4" />
-            {t("cart.clearCart")}
-          </button>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Items */}
-          <div className="lg:col-span-2 space-y-3">
-            {items.map((item: CartItem) => (
-              <CartCard key={item._id} item={item} />
-            ))}
+    <>
+      <div className="min-h-screen bg-gray-50">
+        <div className="container mx-auto p-4">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">
+                {t("cart.title")}
+              </h1>
+              <p className="text-sm text-gray-400 mt-1">
+                {totalItems} {t("cart.itemsCount")}
+              </p>
+            </div>
+            <button
+              onClick={() => dispatch(clearCart())}
+              className="flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition-colors"
+            >
+              <Trash2 className="w-4 h-4" />
+              {t("cart.clearCart")}
+            </button>
           </div>
 
-          {/* Summary */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl p-6 border border-gray-200 sticky top-24">
-              <h2 className="text-base font-semibold text-gray-900 mb-4">
-                {t("cart.summary")}
-              </h2>
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* ✅ item to'g'ridan-to'g'ri CartItem */}
+            <div className="lg:col-span-2 space-y-3">
+              {items.map((item) => (
+                <CartCard key={item._id} item={item} />
+              ))}
+            </div>
 
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between text-gray-500">
-                  <span>{t("cart.itemsCount")}:</span>
-                  <span>{totalItems}</span>
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 sticky top-24">
+                <h2 className="text-base font-semibold text-gray-900 mb-4">
+                  {t("cart.summary")}
+                </h2>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between text-gray-500">
+                    <span>{t("cart.itemsCount")}:</span>
+                    <span>{totalItems}</span>
+                  </div>
+                  <div className="flex justify-between text-gray-500">
+                    <span>{t("cart.subtotal")}:</span>
+                    <span>
+                      {formatPrice(totalPrice)} {t("common.currency")}
+                    </span>
+                  </div>
+                  <hr className="border-gray-100" />
+                  <div className="flex justify-between font-bold text-base text-gray-900">
+                    <span>{t("cart.total")}:</span>
+                    <span>
+                      {formatPrice(totalPrice)} {t("common.currency")}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex justify-between text-gray-500">
-                  <span>{t("cart.subtotal")}:</span>
-                  <span>
-                    {formatPrice(totalPrice)} {t("currency")}
-                  </span>
-                </div>
-                <hr className="border-gray-100" />
-                <div className="flex justify-between font-bold text-base text-gray-900">
-                  <span>{t("cart.total")}:</span>
-                  <span>
-                    {formatPrice(totalPrice)} {t("currency")}
-                  </span>
-                </div>
+
+                <button
+                  onClick={() => setIsOpen(true)}
+                  className="w-full mt-6 bg-[#173F5F] hover:bg-[#0f2d45] text-white font-semibold text-sm py-3.5 rounded-xl transition-colors"
+                >
+                  {t("cart.checkout")}
+                </button>
+
+                <Link
+                  href="/products"
+                  className="block text-center text-sm text-gray-400 hover:text-gray-600 mt-3 transition-colors"
+                >
+                  {t("cart.continueShopping")}
+                </Link>
               </div>
-
-              <button className="w-full mt-6 bg-[#173F5F] hover:bg-[#0f2d45] text-white font-semibold text-sm py-3.5 rounded-xl transition-colors">
-                {t("cart.checkout")}
-              </button>
-
-              <Link
-                href="/products"
-                className="block text-center text-sm text-gray-400 hover:text-gray-600 mt-3 transition-colors"
-              >
-                {t("cart.continueShopping")}
-              </Link>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {isOpen && (
+        <CheckoutDialog
+          setIsOpen={setIsOpen}
+          items={items}
+          totalPrice={totalPrice}
+        />
+      )}
+    </>
   );
 }

@@ -1,15 +1,5 @@
-import { ProductTypes } from "@/entities/product/model/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export interface CartItem extends Omit<ProductTypes, "quantity"> {
-  quantity: number;
-}
-
-interface CartState {
-  items: CartItem[];
-  totalItems: number;
-  totalPrice: number;
-}
+import { CartItem, CartState } from "./types";
 
 const CART_STORAGE_KEY = "shopping_cart";
 
@@ -88,9 +78,7 @@ const CartSlice = createSlice({
     },
 
     increaseQuantity: (state, action: PayloadAction<{ _id: string }>) => {
-      const item = state.items.find(
-        (item) => item._id === action.payload._id,
-      );
+      const item = state.items.find((item) => item._id === action.payload._id);
 
       if (item) {
         item.quantity += 1;
@@ -102,9 +90,7 @@ const CartSlice = createSlice({
     },
 
     decreaseQuantity: (state, action: PayloadAction<{ _id: string }>) => {
-      const item = state.items.find(
-        (item) => item._id === action.payload._id,
-      );
+      const item = state.items.find((item) => item._id === action.payload._id);
 
       if (item) {
         if (item.quantity > 1) {
@@ -136,9 +122,7 @@ const CartSlice = createSlice({
         quantity: number;
       }>,
     ) => {
-      const item = state.items.find(
-        (item) => item._id === action.payload._id,
-      );
+      const item = state.items.find((item) => item._id === action.payload._id);
 
       if (item) {
         if (action.payload.quantity <= 0) {

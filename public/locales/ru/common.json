@@ -3,7 +3,8 @@
     "currency": "Сум",
     "addToCart": "Добавить в корзину",
     "view": "Посмотреть",
-    "exists": "Товар уже в корзине"
+    "exists": "Товар уже в корзине",
+    "cancel": "Отменить"
   },
   "hero": {
     "title": "Лучшие решения для вашего бизнеса",
@@ -234,5 +235,23 @@
     "clearCart": "Очистить корзину",
     "remove": "Удалить",
     "removeBtn": "×"
+  },
+  "checkout": {
+    "title": "Оформить заказ",
+    "orderSummary": "Состав заказа",
+    "contactInfo": "Контактная информация",
+    "fullName": "Имя Фамилия",
+    "fullNamePlaceholder": "Иванов Иван",
+    "phone": "Номер телефона",
+    "address": "Адрес доставки",
+    "addressPlaceholder": "Улица, дом, квартира",
+    "submit": "Оформить заказ",
+    "submitting": "Отправка...",
+    "submitError": "Ошибка при оформлении заказа"
+  },
+  "orderSuccess": {
+    "title": "Заказ принят!",
+    "description": "Мы свяжемся с вами в ближайшее время.",
+    "continueShopping": "Продолжить покупки"
   }
 }
