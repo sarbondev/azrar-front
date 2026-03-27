@@ -7,4 +7,4 @@ export {
   clearCart,
   updateQuantity,
 } from "./model/cartSlice";
-export type { CartItem } from "./model/cartSlice";
+export type { CartItem } from "./model/types";

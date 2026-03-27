@@ -16,7 +16,14 @@ export interface CartState {
   totalPrice: number;
 }
 
+export interface OrderProductPayload {
+  product: string;
+  quantity: number;
+  price: number;
+}
+
 export interface OrderFormDataTypes {
   customer: CustomerTypes;
-  products: CartItem;
+  products: OrderProductPayload[];
+  totalPrice: number;
 }

@@ -17,8 +17,8 @@ export default function ProductsSection() {
       try {
         const response = await fetch(`${API_URL}/products`);
         const data = await response.json();
-        if (data.success) {
-          setProducts(data.data.products || []);
+        if (data.success && data.data?.products) {
+          setProducts(data.data.products);
         }
       } catch (error) {
         console.error("Error fetching products:", error);

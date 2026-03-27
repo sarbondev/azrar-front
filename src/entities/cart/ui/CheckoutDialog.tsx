@@ -51,17 +51,21 @@ export default function CheckoutDialog({
     setIsSubmitting(true);
     setError(null);
     try {
+      const orderProducts = items.map((item) => ({
+        product: item._id,
+        quantity: item.quantity,
+        price: item.price,
+      }));
+
       await axios.post(API_URL + "/orders", {
         customer: formData,
         totalPrice,
-        products: items,
+        products: orderProducts,
       });
 
       dispatch(clearCart());
       router.push("/order-success");
     } catch (err: unknown) {
-      console.log(err);
-
       const e = err as { response?: { data?: { message?: string } } };
       setError(e.response?.data?.message ?? t("checkout.submitError"));
     } finally {

@@ -53,7 +53,7 @@ function SystemCard({
         )}
       </div>
 
-      <div className="absolute inset-0 z-5 bg-linear-to-t from-black/30 via-transparent to-transparent" />
+      <div className="absolute inset-0 z-[5] bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
       <div
         className={`absolute bottom-0 left-0 right-0 z-10 transition-all duration-300 p-4 md:p-6${

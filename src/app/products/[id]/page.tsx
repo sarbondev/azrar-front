@@ -52,8 +52,8 @@ export default function ProductDetailPage() {
           <div>
             <span className="text-sm text-gray-400">
               {lang === "ru"
-                ? product.category.name_ru
-                : product.category.name_uz}
+                ? product.category?.name_ru
+                : product.category?.name_uz}
             </span>
             <h1 className="text-3xl font-bold text-gray-900 mt-1">
               {translation.title}
@@ -98,7 +98,7 @@ export default function ProductDetailPage() {
           {/* Cart */}
           <button
             type="button"
-            disabled={isProductInCart || false}
+            disabled={isProductInCart}
             onClick={() => dispatch(addToCart(product))}
             className="flex items-center justify-center gap-2 bg-[#173F5F] hover:bg-[#0f2d45] disabled:bg-gray-200 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors duration-200"
           >

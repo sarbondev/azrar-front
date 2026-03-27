@@ -57,7 +57,43 @@
   },
   "contact": {
     "title": "Aloqa",
-    "description": "Biz bilan bog'laning"
+    "description": "Biz bilan bog'laning",
+    "heroTitle": "Biz bilan",
+    "heroAccent": "bog'laning",
+    "heroDescription": "Savollaringiz bormi? Biz bilan bog'laning — mutaxassislarimiz sizga yordam berishga tayyor.",
+    "infoTitle": "Aloqa ma'lumotlari",
+    "phone": "Telefon",
+    "email": "Elektron pochta",
+    "address": "Manzil",
+    "workingHours": "Ish vaqti",
+    "workingHoursValue": "Du–Ju: 09:00 – 18:00, Sha: 09:00 – 15:00",
+    "formTitle": "Xabar yuborish",
+    "formDescription": "Ariza qoldiring — biz 24 soat ichida bog'lanamiz.",
+    "fields": {
+      "name": "Ismingiz",
+      "namePlaceholder": "Ismingizni kiriting",
+      "phone": "Telefon raqami",
+      "phonePlaceholder": "+998 90 123 45 67",
+      "subject": "Mavzu",
+      "subjectPlaceholder": "Murojaat mavzusini kiriting",
+      "message": "Xabar",
+      "messagePlaceholder": "Xabaringizni yozing..."
+    },
+    "submit": "Yuborish",
+    "submitting": "Yuborilmoqda...",
+    "successTitle": "Xabar yuborildi!",
+    "successDescription": "Tez orada siz bilan bog'lanamiz.",
+    "errorTitle": "Xatolik",
+    "errorDescription": "Xabar yuborishda xatolik yuz berdi. Qayta urinib ko'ring.",
+    "validation": {
+      "nameRequired": "Ismingizni kiriting",
+      "phoneRequired": "Telefon raqamini kiriting",
+      "phoneInvalid": "Telefon raqami noto'g'ri formatda",
+      "messageRequired": "Xabar matnini kiriting",
+      "messageMinLength": "Xabar kamida 10 ta belgidan iborat bo'lishi kerak"
+    },
+    "mapTitle": "Bizning manzil",
+    "social": "Ijtimoiy tarmoqlar"
   },
   "projects": {
     "title": "Ishonch bilan ishonilgan loyihalar",
@@ -252,5 +288,121 @@
     "title": "Buyurtma qabul qilindi!",
     "description": "Tez orada siz bilan bog'lanamiz.",
     "continueShopping": "Xaridni davom ettirish"
+  },
+  "about": {
+    "hero": {
+      "title_1": "Muhandislik",
+      "title_accent": "yechimlari",
+      "title_2": "ularga ishoniladi",
+      "description": "Sanoat, tijorat va davlat ob'ektlari uchun har qanday murakkablikdagi muhandislik xavfsizlik tizimlarini loyihalaymiz va o'rnatamiz."
+    },
+    "mission": {
+      "title": "Bizning missiyamiz — xavfsiz va ishonchli muhandislik tizimlarini yaratish",
+      "description": "Biz har qanday murakkablikdagi loyihalarni qabul qilamiz va oxirigacha yetkazamiz. Har bir ob'ekt — bu mijoz va jamiyat oldidagi mas'uliyat."
+    },
+    "stats": {
+      "label": "Muhandislik yechimlari",
+      "title": "sizning biznesingiz uchun",
+      "button": "Xizmatlar haqida batafsil",
+      "items": [
+        {
+          "value": "10+",
+          "label": "Yillik tajriba"
+        },
+        {
+          "value": "200+",
+          "label": "Amalga oshirilgan loyihalar"
+        },
+        {
+          "value": "50+",
+          "label": "Mutaxassislar"
+        },
+        {
+          "value": "14+",
+          "label": "Viloyatlar"
+        }
+      ]
+    },
+    "cycle": {
+      "title_1": "To'liq tsikl",
+      "title_accent": "muhandislik",
+      "title_2": "ishlari",
+      "description": "Loyihalashdan montaj va texnik xizmat ko'rsatishgacha — biz loyihani amalga oshirishning barcha bosqichlarini o'z zimmamizga olamiz.",
+      "services": [
+        {
+          "title": "Xavfsizlik tizimlarini loyihalash",
+          "desc": "Video kuzatuv, kirish nazorati va signalizatsiya tizimlari uchun loyiha hujjatlarini ishlab chiqish."
+        },
+        {
+          "title": "Montaj va ishga tushirish",
+          "desc": "Har qanday murakkablikdagi ob'ektlarda muhandislik tizimlarini professional montaj qilish."
+        },
+        {
+          "title": "Muhandislik tizimlaridan foydalanish",
+          "desc": "O'rnatilgan xavfsizlik tizimlarini texnik xizmat ko'rsatish va ekspluatatsiya qilish."
+        },
+        {
+          "title": "Sozlash va sinovdan o'tkazish ishlari",
+          "desc": "Ob'ektni topshirishdan oldin o'rnatilgan uskunani sozlash va sinovdan o'tkazish."
+        }
+      ]
+    },
+    "why_us": {
+      "title_1": "Nima uchun murakkab ob'ektlar bizga",
+      "title_accent": "ishonadi",
+      "title_2": "",
+      "reasons": [
+        {
+          "title": "Murakkab ob'ektlar bilan ishlaymiz",
+          "desc": "Sanoat korxonalarida, yuqori murakkablikdagi ob'ektlarda va kritik infratuzilmada loyihalarni amalga oshiramiz."
+        },
+        {
+          "title": "O'z mutaxassislar jamoamiz",
+          "desc": "Barcha ishlar subpudratchilarni jalb qilmasdan shtatdagi sertifikatlangan mutaxassislar tomonidan bajariladi."
+        },
+        {
+          "title": "Turli turdagi ob'ektlar bilan ishlash tajribasi",
+          "desc": "Yillar davomida sanoat, tijorat va davlat ob'ektlarida loyihalarni amalga oshirdik."
+        },
+        {
+          "title": "Loyiha natijasiga yo'naltirilganlik",
+          "desc": "Ishlarni belgilangan muddatda va buyurtmachining texnik topshirig'iga muvofiq bajarishni kafolatlaymiz."
+        }
+      ]
+    },
+    "objects": {
+      "title_1": "Qanday",
+      "title_accent": "ob'ektlar",
+      "title_2": "bilan ishlaymiz",
+      "items": [
+        {
+          "title": "Sanoat korxonalari",
+          "desc": "Xavfsizlikka yuqori talablar qo'yiladigan zavodlar, fabrikalar va ishlab chiqarish majmualari."
+        },
+        {
+          "title": "Yirik ofis binolari",
+          "desc": "Biznes markazlari va ofis binolari — kalit topshirish shaklida kompleks muhandislik tizimlari."
+        },
+        {
+          "title": "Savdo va jamoat ob'ektlari",
+          "desc": "Savdo markazlari, mehmonxonalar, restoranlar va boshqa jamoat muassasalari."
+        },
+        {
+          "title": "Davlat va munitsipal ob'ektlar",
+          "desc": "Ishonchlilik va sertifikatsiyaga yuqori talablar qo'yiladigan davlat muassasalari."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Konsultatsiya olish",
+      "description": "Ariza qoldiring — biz 24 soat ichida bog'lanamiz va loyihangiz bo'yicha bepul konsultatsiya o'tkazamiz.",
+      "fields": {
+        "name": "Ismingiz",
+        "phone": "Telefon raqami",
+        "company": "Kompaniya nomi",
+        "message": "Xabar"
+      },
+      "button": "Yuborish"
+    }
   }
 }

@@ -4,11 +4,11 @@ import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
 import {
-  CartItem,
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
 } from "../model/cartSlice";
+import { CartItem } from "../model/types";
 import { formatPrice } from "@/shared/lib/utils";
 import { Minus, Plus, X } from "lucide-react";
 import { useClientTranslation } from "@/shared/i18n";
@@ -43,7 +43,7 @@ export default function CartCard({ item }: { item: CartItem }) {
             {item.translations?.[currentLanguage]?.title ?? "—"}
           </h3>
           <button
-            onClick={() => dispatch(removeFromCart(item))}
+            onClick={() => dispatch(removeFromCart({ _id: item._id }))}
             className="shrink-0 w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-red-500 transition-colors"
           >
             <X className="w-4 h-4" />
@@ -60,7 +60,7 @@ export default function CartCard({ item }: { item: CartItem }) {
         {/* Quantity */}
         <div className="flex items-center gap-3 mt-3">
           <button
-            onClick={() => dispatch(decreaseQuantity(item))}
+            onClick={() => dispatch(decreaseQuantity({ _id: item._id }))}
             className="w-8 h-8 rounded-xl border border-gray-200 flex items-center justify-center hover:border-gray-400 hover:bg-gray-50 transition-all"
           >
             <Minus className="w-3 h-3" />
@@ -69,7 +69,7 @@ export default function CartCard({ item }: { item: CartItem }) {
             {item.quantity}
           </span>
           <button
-            onClick={() => dispatch(increaseQuantity(item))}
+            onClick={() => dispatch(increaseQuantity({ _id: item._id }))}
             className="w-8 h-8 rounded-xl border border-gray-200 flex items-center justify-center hover:border-gray-400 hover:bg-gray-50 transition-all"
           >
             <Plus className="w-3 h-3" />

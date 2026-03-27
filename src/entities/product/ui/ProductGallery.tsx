@@ -11,10 +11,11 @@ function ProductGallery({
 }) {
   const [active, setActive] = useState(0);
 
-  const getUrl = (path: string) =>
-    path.startsWith("http")
-      ? path
-      : `${process.env.NEXT_PUBLIC_API_URL}${path}`;
+  const getUrl = (path: string) => {
+    if (path.startsWith("http")) return path;
+    const base = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api").replace("/api", "");
+    return `${base}${path}`;
+  };
 
   if (!images?.length) {
     return (

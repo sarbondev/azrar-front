@@ -103,7 +103,7 @@ function ProductCard({ product }: { product: ProductTypes }) {
 
         <button
           type="button"
-          disabled={isProductInCart || false}
+          disabled={isProductInCart}
           onClick={() => dispatch(addToCart(product))}
           className="flex items-center justify-center gap-2 bg-[#173F5F] hover:bg-[#0f2d45] disabled:bg-gray-400 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors duration-200"
         >
